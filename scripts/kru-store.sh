@@ -65,6 +65,9 @@ kru_path() {
     plan)        printf '%s/plan' "$(kru_project)" ;;
     plan/*)      printf '%s/plan/%s' "$(kru_project)" "${1#plan/}" ;;
     agent-memory) printf '%s/agent-memory' "$(kru_project)" ;;
+    verify)      printf '%s/verify' "$(kru_project)" ;;
+    runs)        printf '%s/runs' "$(kru_project)" ;;
+    resume)      printf '%s/resume.md' "$(kru_project)" ;;
     *) return 1 ;;
   esac
 }

@@ -82,7 +82,9 @@ expensive to undo — is theirs, because a wrong guess can't be walked back. Eve
 two-way door and it is yours: pick the answer you'd defend, name it in one line as a decision you
 made, and keep going. A call an established standard answers — WCAG, a UX heuristic, a platform
 convention, the library's documented default — is yours even where it touches what the thing says or
-does: the standard is the answer, so cite it in that one line.
+does: the standard is the answer, so cite it in that one line. An empirical two-way-door question —
+does X work, which is faster — is settled by the cheapest experiment that answers it (a scratch
+prototype, a measurement), never by asking the user.
 
 **A question never parks work it doesn't touch.** When a message carries a question, everything the
 answer can't change is already dispatched, and the message says so in one line; only the slice that
@@ -218,7 +220,7 @@ Two things you never restate in a handoff, because a restatement becomes a secon
 4. **The behaviors to cover, and the test posture** — the list from your grill (or `brief.md`'s `Done when`), plus which exemption applies when one does (*Test-first*, below).
 5. **The closed set** — a pointer to the token file, never its values paraphrased.
 6. **What the slice's shape demands** — the props contract across the UI seam, the states to reach, the motion intent, the primitive library on React from scratch, pre-sourced asset paths.
-7. **What comes back** — the return shape, plus a report path on a review brief (Step 4).
+7. **What comes back** — the return shape, naming for each behavior in item 4 its done-check (a predicate a command or file settles) and the proof to return (test name, command and output, count, artifact path) — `gates.md` → *Done is judged on evidence* is how you check it — plus a report path on a review brief (Step 4).
 
 **The scan — run it over the brief's words before you send it.** The seven items are how you compose one; these three are text-level checks on what you actually wrote, and what they catch is what recurs. The mechanical halves — a coordinate, a verbatim or re-typed always-loaded rule, a hedge on a term, `planner`'s `brief.md` — are the **handoff check** below (`## Grok Bot operating rules`): run it yourself over every brief before dispatching; a hit means fix the brief and re-check. Two it supplies rather than refuses when a brief lacks them: item 7's report path and the learnings channel. The reading halves no grep runs are yours:
 

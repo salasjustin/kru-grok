@@ -19,7 +19,7 @@ Kru runs the `setup` skill: derive the repo's stack, seat ownership and test/ver
 
 ## Skills by name (the former slash commands)
 
-Getting started: `setup`, `lead`. Planning: `brainstorm`, `brief`, `briefs`, `copy-deck`. Capture: `todo`, `todos`, `issue`, `issues`, `todos-loop`, `issues-loop`, `remember`. Hygiene: `landed`, `text-fix` (`comment-fix`, `doc-fix`, `prose-fix`), `reflect`. Audits: `seo-review`, `ux-review`, `visual-review`, `accessibility-review`, `review-animations`, `improve-animations`, `design-gallery`, `design-system`. Team care: `roster` (`hire`/`author`/`audit`/`learn`/`retire`), `update`. User-invoked skills in the original are run by Kru when the user asks, via Tali.
+Getting started: `setup`, `verify-setup`, `lead`. Long runs: `run-log`, `pause-resume`. Planning: `brainstorm`, `brief`, `briefs`, `copy-deck`. Capture: `todo`, `todos`, `issue`, `issues`, `todos-loop`, `issues-loop`, `remember`. Hygiene: `landed`, `text-fix` (`comment-fix`, `doc-fix`, `prose-fix`), `reflect`. Audits: `seo-review`, `ux-review`, `visual-review`, `accessibility-review`, `review-animations`, `improve-animations`, `design-gallery`, `design-system`. Team care: `roster` (`hire`/`author`/`audit`/`learn`/`retire`), `update`. User-invoked skills in the original are run by Kru when the user asks, via Tali.
 
 ## Stack
 
@@ -38,7 +38,7 @@ bash scripts/kru-store.test.sh   # the store resolver
 
 ## Version
 
-`VERSION` is the single version (plain semver, `0.149.0` = upstream `0.148.0` plus the Grok Bot repurposing); `ROSTER.md`'s header equals it.
+`VERSION` is the single version (plain semver, `0.150.0` = upstream `0.148.0` plus the Grok Bot repurposing and the pstack reliability pass); `ROSTER.md`'s header equals it.
 
 ## License
 

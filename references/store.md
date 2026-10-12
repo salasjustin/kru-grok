@@ -3,7 +3,7 @@
 The team writes two kinds of durable state, with different lifetimes. On Grok Bot both live on the box under `/workspace/kru-store/`:
 
 - **Cross-project** (`/workspace/kru-store/`) — the preference loop: `inbox.md`, `patterns/`, `refusals.jsonl`, and the audit bookkeeping. It follows the **user**, across every engagement.
-- **Project** (`/workspace/kru-store/<project>/`) — one project's plan of record: `TODOS.md`, `issues/`, `notes/`, `plan/` (`TRACKER.md` owns its layout), plus `sheet.md` (from `setup`), `dispatch.log` (the lead's dispatch ledger) and `agent-memory/<seat>.md`.
+- **Project** (`/workspace/kru-store/<project>/`) — one project's plan of record: `TODOS.md`, `issues/`, `notes/`, `plan/` (`TRACKER.md` owns its layout), plus `sheet.md` (from `setup`), `dispatch.log` (the lead's dispatch ledger), `agent-memory/<seat>.md`, `verify/` (from `verify-setup`), `runs/<slug>/` (from `run-log`) and `resume.md` (from `pause-resume`).
 
 **`scripts/kru-store.sh` resolves both** and is the single source of truth for where the store sits:
 
@@ -19,7 +19,7 @@ Ask it for a path; never assemble one.
 
 | Cross-project | Project |
 |---|---|
-| `inbox` · `patterns/<slug>` · `refusals` · `audit/<name>` | `todos` · `issues/<slug>` · `notes/<slug>` · `plan` · `plan/<effort>/<file>` · `sheet` · `dispatch` · `agent-memory` |
+| `inbox` · `patterns/<slug>` · `refusals` · `audit/<name>` | `todos` · `issues/<slug>` · `notes/<slug>` · `plan` · `plan/<effort>/<file>` · `sheet` · `dispatch` · `agent-memory` · `verify` · `runs` · `resume` |
 
 ## Overrides
 

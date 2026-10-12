@@ -26,6 +26,15 @@ On the page that means: sequences whose order matters, defaults with the reason 
 - **Re-verify a library skill**: install the new version in a scratch dir (one package at a time), reproduce each claim the row names, edit the ones that changed (a fixed trap is deleted), then move the `Reproduced on` line to the version and date of the run. The pin names only versions a claim ran on — a claim you didn't rerun keeps its old pin, split across two lines if it comes to that.
 - **Rewrite**: the entry bar above, on the new version, from a blank page.
 
+## Test the edit blind
+A skill edit that changes behavior, not just wording, gets one blind run before its commit:
+1. **Rubric** — 3–6 concrete criteria for what the edit should change, written first and kept from every candidate.
+2. **Candidates** — one subagent per variant (old, new), each in its own scratch dir under a project-shaped name with its variant in place, all given the same organic task a user would type. Every path and prompt a candidate sees reads as ordinary project work: no `eval`, `test`, `judge`, `rubric`, `compare` or `candidate` in them, and no word of the other variant.
+3. **Judge** — one subagent on a different model family from the candidates scores both outputs by sanitized label (A, B) against the rubric, in one pass.
+4. **Read both outputs yourself**; where you and the judge disagree, the rubric is ambiguous — sharpen it and rerun.
+
+Done when the commit body records the task, the rubric and the verdict.
+
 ## Both
 Minor version bump — `VERSION` · `ROSTER.md` header, equal. Commit on a branch if asked; push/tag/merge only on the user's chat approval.
 
