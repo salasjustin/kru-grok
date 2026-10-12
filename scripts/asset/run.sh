@@ -1,9 +1,8 @@
 #!/bin/bash
 # the asset seats' node deps (sharp, @google/genai, tsx) and the rembg venv live in
-# the plugin's data dir, not beside this script. claude code auto-installs a root
-# package.json + lockfile into every cached plugin version — 65 MB a version for
-# two seats that rarely run — while ${CLAUDE_PLUGIN_DATA} survives updates. so the
-# manifest sits down here, out of the root, and installs once, on first use.
+# a data dir outside the checkout ($KRU_ASSET_DATA, default ~/.kru-grok/asset), not
+# beside this script: 65 MB for two seats that rarely run stays out of the repo and
+# survives a re-clone. the manifest installs there once, on first use.
 #
 # the generator is copied into the data dir too: an ESM import resolves next to the
 # importing file, never through NODE_PATH, and the rembg venv it bootstraps lands

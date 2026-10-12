@@ -32,8 +32,12 @@ Kru runs `roster hire <role>` (`skills/roster/hire.md`), which writes `agents/<n
 ## Checks
 
 ```sh
+bash scripts/verify.sh           # the static gate CI runs on every PR: all of the below, plus JSON/YAML/frontmatter
+                                 # validity, version consistency and a scan for other-platform leftovers
 bash scripts/audit.sh            # counts, orphans, version equality, frontmatter shape, stale host mechanics
 bash scripts/kru-store.test.sh   # the store resolver
+bash scripts/run-log.test.sh     # the run-log row writer
+bash scripts/smoke.sh            # local only, needs ANTHROPIC_API_KEY: a headless agent runs lead + run-log + pause-resume end to end
 ```
 
 ## Version

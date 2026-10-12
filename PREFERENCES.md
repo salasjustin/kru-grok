@@ -4,7 +4,7 @@ The team is **project-agnostic**: the same agents start from the same frozen def
 
 This file documents the loop that fixes that: **capture → sweep → evolve**. It is the preference-store sibling of `TRACKER.md` (the plan store). The distinction:
 
-- **`TRACKER.md` / `TODOS.md` / `issues/` / `notes/`** — *project-specific* todos, known defects, brainstorming, and the current change's brief. They live at user level too, but **keyed per project** (`~/.kru/management/<project-slug>/`), because they're about *that product*.
+- **`TRACKER.md` / `TODOS.md` / `issues/` / `notes/`** — *project-specific* todos, known defects, brainstorming, and the current change's brief. They live at user level too, but **keyed per project** (`bash scripts/kru-store.sh project` → `/workspace/kru-store/<project>/`), because they're about *that product*.
 - **This store** — *cross-project* preferences about how **the team itself** should work. They live **un-keyed at the kru root**, because they belong to the team, not any product.
 
 ## The loop
@@ -42,9 +42,9 @@ Three arrows, one circuit. **Cheap lossless capture**, then a **curated sweep** 
 
 It has **three writers**:
 
-1. **The user, explicitly** — `remember <what they liked>`. Never inferred from approval; the team does not guess. A liked *pattern* with concrete code is saved as an artifact under `~/.kru/patterns/<slug>.md` and indexed by an inbox line.
+1. **The user, explicitly** — `remember <what they liked>`. Never inferred from approval; the team does not guess. A liked *pattern* with concrete code is saved as an artifact at `bash scripts/kru-store.sh path patterns/<slug>` and indexed by an inbox line.
 2. **Agents, as they work** — a builder/reviewer that discovers a durable preference (the user rejected X twice and chose Y; this repo's approved convention is Z) appends one line at end-of-run. This is journaling a *learning*, not reading approval — the same instinct as `test-writer` capturing a repo's testing conventions. The **lead** hands each dispatched seat the inbox path + this format so the learning lands (Step 3).
-3. **`dispatch-auditor`, on the team's own process** — the lead logs every team-seat dispatch to `dispatch.log` (`skills/lead/SKILL.md` → *Grok Bot operating rules*) and runs the seat to audit it against the `lead` Step 3 contract, filing `[workflow]` lines for durable deviations (routing misses, incomplete handoffs, restated ambient blocks). This is the loop's autonomous half — the team observes how it was run and proposes its own corrections — and it is autonomy at the **capture** tier only: still never inferred from approval (the ledger holds the lead's dispatch text, not the user's reactions), and still gated at the sweep like every other line. The handoff gate's refusals land in that ledger too, and in `~/.kru/refusals.jsonl` across sessions, which the sweep reads beside the inbox for gate misfires (`skills/roster/learn.md`).
+3. **`dispatch-auditor`, on the team's own process** — the lead logs every team-seat dispatch to `dispatch.log` (`skills/lead/SKILL.md` → *Grok Bot operating rules*) and runs the seat to audit it against the `lead` Step 3 contract, filing `[workflow]` lines for durable deviations (routing misses, incomplete handoffs, restated ambient blocks). This is the loop's autonomous half — the team observes how it was run and proposes its own corrections — and it is autonomy at the **capture** tier only: still never inferred from approval (the ledger holds the lead's dispatch text, not the user's reactions), and still gated at the sweep like every other line. The handoff gate's refusals land in that ledger too, and in `bash scripts/kru-store.sh path refusals` across sessions, which the sweep reads beside the inbox for gate misfires (`skills/roster/learn.md`).
 
 Entry format — one line, untriaged, lossless (mirrors the `TODOS.md` line):
 
