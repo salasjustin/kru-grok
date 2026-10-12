@@ -36,5 +36,7 @@ Read-only. Assert every point of the wiring map (`SKILL.md`) agrees across files
 
 7. **Stale host mechanics** — `bash scripts/audit.sh` greps for `CLAUDE_PLUGIN_ROOT`, `/kru:`, `hooks.json`, `subagent_type`, `plugin.json`/`marketplace.json` and must find nothing. It also runs assertions 1, 3 and 4 and the registration check (2a). Quoted subject matter (`extension-builder`'s Claude Code channels, vendored skills) does not use those tokens.
 
+8. **Skill and store mechanics** — every `skills/*/scripts/*` file is executable; a skill's `disable-model-invocation` key, where present, is the literal `true`; every logical name in `references/store.md` → *The logical names* resolves through `bash scripts/kru-store.sh path`. `bash scripts/audit.sh` runs all three.
+
 ## Report
 One row per failed assertion: which file(s), what disagrees, and the one-line fix (usually: run `hire`/`retire`, correct the version, or restore the clause from `shared-blocks.md`). If all pass, say so in one line. Do not edit files.

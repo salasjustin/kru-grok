@@ -23,6 +23,7 @@ copies deviate from upstream — is in `SOURCES.md` → *Vendored resources*.
 | `honojs/skills` | MIT (`skills/hono/LICENSE`) | `skills/hono/` |
 | `tursodatabase/agent-skills` | MIT (`LICENSE` per directory) | `skills/turso-db/`, `skills/turso-cloud/` |
 | `dgreenheck/webgpu-claude-skill` | MIT per the upstream README; no license file upstream | `skills/webgpu-threejs-tsl/` |
+| `cursor/plugins` → `pstack` (`main`) | MIT, © 2026 Lauren Tan | `skills/verify-setup/` (from `create-verification-skill`, `maintain-verification-skill`), `skills/run-log/` incl. `scripts/log.sh` (from `show-me-your-work`, `poteto-mode/playbooks/autonomous-run.md`), `skills/pause-resume/` (from `poteto-mode/playbooks/pause-safely.md`, `session-pickup.md`), and the *Test the edit blind* step in `skills/roster/author.md` (from `poteto-mode/playbooks/eval.md`) — adapted, not verbatim |
 
 Everything else in this repository — the lead skill, the seat definitions under
 `agents/`, the hooks, the first-party skills, and the reference documents — is

@@ -19,7 +19,7 @@ Kru runs the `setup` skill: derive the repo's stack, seat ownership and test/ver
 
 ## Skills by name (the former slash commands)
 
-Getting started: `setup`, `lead`. Planning: `brainstorm`, `brief`, `briefs`, `copy-deck`. Capture: `todo`, `todos`, `issue`, `issues`, `todos-loop`, `issues-loop`, `remember`. Hygiene: `landed`, `text-fix` (`comment-fix`, `doc-fix`, `prose-fix`), `reflect`. Audits: `seo-review`, `ux-review`, `visual-review`, `accessibility-review`, `review-animations`, `improve-animations`, `design-gallery`, `design-system`. Team care: `roster` (`hire`/`author`/`audit`/`learn`/`retire`), `update`. User-invoked skills in the original are run by Kru when the user asks, via Tali.
+Getting started: `setup`, `verify-setup`, `lead`. Long runs: `run-log`, `pause-resume`. Planning: `brainstorm`, `brief`, `briefs`, `copy-deck`. Capture: `todo`, `todos`, `issue`, `issues`, `todos-loop`, `issues-loop`, `remember`. Hygiene: `landed`, `text-fix` (`comment-fix`, `doc-fix`, `prose-fix`), `reflect`. Audits: `seo-review`, `ux-review`, `visual-review`, `accessibility-review`, `review-animations`, `improve-animations`, `design-gallery`, `design-system`. Team care: `roster` (`hire`/`author`/`audit`/`learn`/`retire`), `update`. User-invoked skills in the original are run by Kru when the user asks, via Tali.
 
 ## Stack
 
@@ -32,13 +32,17 @@ Kru runs `roster hire <role>` (`skills/roster/hire.md`), which writes `agents/<n
 ## Checks
 
 ```sh
+bash scripts/verify.sh           # the static gate CI runs on every PR: all of the below, plus JSON/YAML/frontmatter
+                                 # validity, version consistency and a scan for other-platform leftovers
 bash scripts/audit.sh            # counts, orphans, version equality, frontmatter shape, stale host mechanics
 bash scripts/kru-store.test.sh   # the store resolver
+bash scripts/run-log.test.sh     # the run-log row writer
+bash scripts/smoke.sh            # local only, needs ANTHROPIC_API_KEY: a headless agent runs lead + run-log + pause-resume end to end
 ```
 
 ## Version
 
-`VERSION` is the single version (plain semver, `0.149.0` = upstream `0.148.0` plus the Grok Bot repurposing); `ROSTER.md`'s header equals it.
+`VERSION` is the single version (plain semver, `0.150.0` = upstream `0.148.0` plus the Grok Bot repurposing and the pstack reliability pass); `ROSTER.md`'s header equals it.
 
 ## License
 

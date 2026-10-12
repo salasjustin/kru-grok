@@ -17,6 +17,13 @@ for d in skills/*/; do [ -f "$d/SKILL.md" ] || bad "$d has no SKILL.md"; done
 for f in skills/*/SKILL.md; do
   head -1 "$f" | grep -q '^---$' || bad "$f has no frontmatter"
   [ "$(sed -n 's/^name: //p' "$f" | head -1 | tr -d '"')" = "$(basename "$(dirname "$f")")" ] || bad "$f name != dir"
+  dmi=$(sed -n '2,/^---$/p' "$f" | sed -n 's/^disable-model-invocation:[[:space:]]*//p')
+  [ -z "$dmi" ] || [ "$dmi" = true ] || bad "$f disable-model-invocation: $dmi (want true)"
+done
+for s in skills/*/scripts/*; do [ ! -f "$s" ] || [ -x "$s" ] || bad "$s not executable"; done
+# every logical name references/store.md lists resolves (<slug>/<effort>/<file> filled with a sample)
+for n in $(sed -n '/^## The logical names/,/^## /p' references/store.md | grep -oE '`[a-z/<>-]+`' | tr -d '`' | sed -E 's/<[a-z]+>/x/g'); do
+  bash scripts/kru-store.sh path "$n" >/dev/null 2>&1 || bad "kru-store.sh path $n (named in references/store.md) does not resolve"
 done
 stale=$(grep -rnE 'CLAUDE_PLUGIN_ROOT|/kru:|hooks\.json|subagent_type|plugin\.json|marketplace\.json' agents skills references README.md GROK.md ROSTER.md SOURCES.md PREFERENCES.md TRACKER.md scripts 2>/dev/null | grep -v -e '^scripts/audit.sh' -e '^skills/roster/audit.md')
 [ -z "$stale" ] || { echo "$stale"; bad "stale host mechanics (above)"; }

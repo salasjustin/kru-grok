@@ -5,7 +5,7 @@ description: Set the team up for a project — derive the repo's standing answer
 
 Setup records, once per project, **who is on the team here**, so every later dispatch routes off written answers instead of re-deriving them. It is run by the lead (Kru) when a project is first taken on, and re-run when the repo or this team's version moves. It never edits the project repo unless the user approves in chat.
 
-The Claude Code original also wrote cloud-VM install hooks, a `verify` project skill and permission grants; none of that exists here. The full original is kept at `docs/legacy-claude-code/skills/setup/SKILL.md` for reference only.
+The Claude Code original also wrote cloud-VM install hooks, a `verify` project skill and permission grants; the verify recipe is now `verify-setup`'s (`skills/verify-setup/SKILL.md`), and the rest does not exist here. The full original is kept at `docs/legacy-claude-code/skills/setup/SKILL.md` for reference only.
 
 ## Do
 

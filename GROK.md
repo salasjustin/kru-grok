@@ -12,6 +12,7 @@ Read this with `skills/lead/SKILL.md`. It is the operating contract; nothing enf
 3. Seats get no credentials. Anything needing a login goes back to Kru.
 4. Parallel seats need disjoint paths; file-mutating parallel work uses separate worktrees.
 5. Append the dispatch and the return to `dispatch.log` (`bash scripts/kru-store.sh path dispatch`).
+6. A seat reads only its `agents/<seat>.md`. A delegate that acts as lead or runs kru's own process — an autonomous run (`run-log`), a headless builder on another model working a kru project, a pickup (`pause-resume`) — reads this file and `skills/lead/SKILL.md` before anything else.
 
 ## Rules that replace the old Claude Code hooks
 | Old hook | Rule now |

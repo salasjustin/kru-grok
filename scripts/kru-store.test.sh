@@ -20,6 +20,9 @@ ARGS=(path inbox);      check "inbox is cross-project" /workspace/kru-store/inbo
 ARGS=(path nope);       run env >/dev/null 2>&1; check "unknown logical name exits 64" 64 "$?"
 ARGS=(path sheet); check "sheet path" /workspace/kru-store/acme-web/sheet.md "$(run env)"
 ARGS=(path dispatch); check "dispatch log path" /workspace/kru-store/acme-web/dispatch.log "$(run env)"
+ARGS=(path verify); check "verify recipe dir" /workspace/kru-store/acme-web/verify "$(run env)"
+ARGS=(path runs); check "run logs dir" /workspace/kru-store/acme-web/runs "$(run env)"
+ARGS=(path resume); check "resume note path" /workspace/kru-store/acme-web/resume.md "$(run env)"
 mkdir -p "$t/wt" && git -C "$t/acme-web" -c user.name=a -c user.email=a@a commit -q --allow-empty -m i && git -C "$t/acme-web" worktree add -q "$t/wt/feat" -b feat
 ARGS=(slug); check "a linked worktree keeps the main repo's slug" acme-web "$( (cd "$t/wt/feat" && env -u KRU_PROJECT bash "$S" slug) )"
 printf '%s passed, %s failed\n' "$pass" "$fail"; [ "$fail" = 0 ]
