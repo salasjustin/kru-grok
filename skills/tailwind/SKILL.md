@@ -1,7 +1,6 @@
 ---
 name: tailwind
 description: Tailwind CSS v4 recipes. Use when writing or reviewing markup styled with Tailwind utilities, wiring Tailwind into a build, or debugging a class that paints nothing. v4 only; not v3, not Panda, not CSS modules.
-user-invocable: false
 ---
 
 **Tailwind v4 scans your source as plain text, then emits one sorted stylesheet whose config is CSS.** Three consequences drive everything below: a class name that isn't a **complete literal** in a scanned file does not exist · a conflict between two utilities is decided by **the sheet's order**, never the attribute's · and the configuration is the CSS file, so a `tailwind.config.js` sitting in the repo is inert.

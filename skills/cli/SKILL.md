@@ -1,7 +1,6 @@
 ---
 name: cli
 description: CLI contract recipes. Use when writing or reviewing a command-line tool's flags and arguments, stdout vs stderr, exit status, `--json`, stdin, prompts, env/config precedence or `--dry-run`, in Node/TS, Python or Go. A full-screen terminal app is `tui-design`'s.
-user-invocable: false
 ---
 
 **A CLI's caller is a program at least as often as a person** — a shell script, a CI step, an agent's Bash tool. That caller reads three things: stdout as data, the exit status as the verdict, and nothing else. Every trap below is the tool telling that caller the wrong thing while a human watching a terminal sees nothing amiss — so test the contract with the terminal taken away: `cmd </dev/null 2>/dev/null | cat; echo $?`.

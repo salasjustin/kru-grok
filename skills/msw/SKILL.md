@@ -1,7 +1,6 @@
 ---
 name: msw
 description: "MSW 3 recipes — the green test whose request never met a handler. Use when writing or reviewing a test, setup file or handler in a repo with `msw` in `package.json`. Node `setupServer` under Vitest; not the browser worker, not the Vite plugin."
-user-invocable: false
 ---
 
 **Every request MSW doesn't answer goes somewhere, and the test can't tell where.** A mocked request proves only what its handler checked; everything the handlers don't claim — an unmatched URL, a resolver that returns nothing, a request sent after a second server's `close()` — leaves for the real network or fails inside app code that catches it, and the test stays green. Each trap below is one of those exits. Make every exit fail the test (the setup file below), then read a failure as a report on which handler didn't answer.

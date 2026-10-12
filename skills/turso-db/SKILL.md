@@ -1,7 +1,6 @@
 ---
 name: turso-db
 description: Turso (Limbo) — in-process SQLite-compatible database in Rust, ex-libSQL. Use with the `@tursodatabase/*` SDKs (Node, serverless, WASM/OPFS, React Native), Rust `turso`, `pyturso` or `tursogo` — vector/full-text search, CDC, MVCC, encryption, sync. Skip web searches for 'libsql' (legacy).
-user-invocable: false
 ---
 
 <!-- vendored verbatim from `tursodatabase/agent-skills` main:skills/turso-db @ 34ced52 (MIT; LICENSE kept; `user-invocable: false` added to frontmatter).

@@ -63,7 +63,7 @@ The step the source stops short of. Each component has a place on the page:
 - **level 3–4** → the unique attribute leads. The mechanism is what makes a worn-out claim credible again.
 - **level 5** → the best-fit customer leads. Identification is the only thing still being read.
 
-Only then pick a formula, from `${CLAUDE_PLUGIN_ROOT}/skills/copywriting/references/copy-frameworks.md` → *Headline Formulas* — the formula that fits the lead already settled, never a formula chosen first and filled in after.
+Only then pick a formula, from `skills/copywriting/references/copy-frameworks.md` → *Headline Formulas* — the formula that fits the lead already settled, never a formula chosen first and filled in after.
 
 ## Two tests before the headline leaves
 

@@ -1,7 +1,6 @@
 ---
 name: api-design
 description: API design for a surface code you don't own calls — a versioned public or API-key surface, key minting and auth, the webhooks your app sends, pagination and incremental sync, idempotent writes. Use when building or reviewing one. Sending webhooks only; receiving a provider's is that provider's seat.
-user-invocable: false
 ---
 
 **A public API fails in a stranger's code, not in yours.** The integrator wrote against what you shipped, and you can't make them change it. So three rules shape everything below. The wire shape is **permanent**: you can add to it, but a rename, a removed field or a changed type is a new version. Delivery is **at-least-once and unordered**, whether it's a webhook retry or a client resending after a timeout. And every credential **leaks** eventually, so the design question is how quickly a leak is spotted and revoked.

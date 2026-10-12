@@ -1,8 +1,6 @@
 ---
 name: landed
 description: The PR for this session's branch merged — verify it on GitHub, sync the base branch, retire the branch.
-disable-model-invocation: true
-argument-hint: "[pr number — omit for the current branch's PR]"
 ---
 
 The user just watched their PR merge. Put the session back on the base branch, up to date, with the spent branch gone — then stop, so the next change starts from a clean base.

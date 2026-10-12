@@ -1,7 +1,6 @@
 ---
 name: typescript
 description: TypeScript language + type system — tsconfig, module resolution, path aliases, project references, generics/conditional/mapped types, `.d.ts`, ESM/CJS, JS→TS migration, type-error and type-perf diagnostics. Use when a tsconfig, a cryptic type error or a gnarly type is in play. Not the linter.
-user-invocable: false
 ---
 
 TypeScript is **ambient** — it's woven through the feature code you're already writing, not a separate surface to hand off. Load this when you touch the compiler config or hit a hard type puzzle, and solve it in-context. For repo-wide TS-infra work (migrate the whole repo to strict, set up project references across a monorepo, profile slow type-checking), the lead dispatches a dedicated agent with this skill loaded.

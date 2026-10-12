@@ -1,14 +1,13 @@
 ---
 name: design-system
 description: The shape of a design system before its values exist — seven foundations (color · typography · size · elevation · motion · primitives · shells). `create` writes it at bootstrap with every value `UNSET`; `audit` returns what an existing system is missing. Reach for it on a coverage read.
-argument-hint: "<create|audit> [influence…]"
 ---
 
 # design-system — the shape, before the values
 
 A token file answers *what values exist*. It cannot answer *what this system needs*, because it was written one component at a time and holds exactly what those components asked for. A system derived from its consumers is complete by construction and **blind** by construction: every hole in it is invisible from inside it. Whether it is **whole** is the one thing no repo can supply, and it is what this rubric answers.
 
-Everything authored here is **shape**: a step count, what a step is for, the name it carries. The **values** that land in that shape arrive later, from the design (`${CLAUDE_PLUGIN_ROOT}/references/ui-practice.md`).
+Everything authored here is **shape**: a step count, what a step is for, the name it carries. The **values** that land in that shape arrive later, from the design (`references/ui-practice.md`).
 
 ## A foundation is answered by set · rule · consumer
 
@@ -69,8 +68,8 @@ Those three are also the finding names — `audit.md`.
 ## Owned elsewhere
 
 - **The values and the look** — Claude Design (`/design`), transcribed once by a builder; the verdict is the user's glance.
-- **Whether a consumer resolves to the token file** — the repo's conformance gate, at every commit (`${CLAUDE_PLUGIN_ROOT}/references/ui-practice.md` → *The conformance gate*).
-- **What components exist and what they render** — `/design-gallery`, on the app's own dev server.
-- **The rendered states and widths** — `/visual-review`.
+- **Whether a consumer resolves to the token file** — the repo's conformance gate, at every commit (`references/ui-practice.md` → *The conformance gate*).
+- **What components exist and what they render** — `design-gallery`, on the app's own dev server.
+- **The rendered states and widths** — `visual-review`.
 - **Flows, IA, the screen × state inventory, the conventions file** — `ux-designer`.
 - **How a component behaves** — `ui-patterns`, design-system agnostic by construction.

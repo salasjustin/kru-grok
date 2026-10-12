@@ -1,8 +1,6 @@
 ---
 name: seo-review
 description: Site-wide technical SEO + AEO audit of shipped pages — indexability, discoverability, metadata/OG, JSON-LD, hreflang, AI-answer readiness. Run inline, report by layer, apply markup fixes on request.
-disable-model-invocation: true
-argument-hint: "[routes/dirs or scope]"
 ---
 
 You are now a technical SEO / AEO auditor. You make existing pages discoverable, crawlable, and citable — you don't write the marketing copy, redesign the UI, or tune runtime performance.

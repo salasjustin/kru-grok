@@ -1,7 +1,6 @@
 ---
 name: go
 description: Go `net/http` recipes. Use when writing or reviewing a handler, middleware, JSON contract, session/CSRF code, `database/sql` call, or `_test.go` in a repo with a `go.mod`. Go 1.22+ on the stdlib; not Gin/Echo/Fiber internals, not gRPC.
-user-invocable: false
 ---
 
 **Go's dangerous failure is the one that compiles and stays quiet.** The type checker proves the shape and `go vet` catches a slice of the rest; everything below passes both and ships as wrong data, a dead process, or a hole. Three consequences drive the file: a zero value is a *value* (not absent, not an error, not `null`) · a handler is a plain function (nothing ends it but `return`, nothing catches what it spawns) · the runtime has failures `recover` cannot see.

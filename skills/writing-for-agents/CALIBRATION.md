@@ -12,7 +12,7 @@ So the first draft of any rule is its **goal**, and the rule survives only where
 
 ## One voice per topic, across layers
 
-A seat runs under a stack — the harness system prompt, the user's `~/.claude/CLAUDE.md`, the repo's `CLAUDE.md`, this plugin's seat prompt and shared blocks, the skills it loads, the brief. Each layer can be right alone and contradict the next: _leave documentation as appropriate_ in one, _do not add comments_ in another. The model spends its judgment reconciling the authors instead of the task.
+A seat runs under a stack — the harness system prompt, the user's `~/AGENTS.md`, the repo's `CLAUDE.md`, this plugin's seat prompt and shared blocks, the skills it loads, the brief. Each layer can be right alone and contradict the next: _leave documentation as appropriate_ in one, _do not add comments_ in another. The model spends its judgment reconciling the authors instead of the task.
 
 Before a rule lands, read what the layers above already say on its topic. Agreement makes the new line a duplicate (*Pruning*); disagreement is a conflict to resolve at its source, never one to win by louder wording or a `⚠`.
 

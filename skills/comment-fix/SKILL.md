@@ -1,8 +1,6 @@
 ---
 name: comment-fix
 description: Audit the comments in a target — working tree, path, branch or PR — and fix them in place.
-disable-model-invocation: true
-argument-hint: "[<path> | <branch> | <pr number> — omit for the working tree]"
 ---
 
 Comments are the deliverable and the only thing that moves. The house standard, in one line: **a comment carries what the code can't, in the voice of the comments around it, written for the next person to read the code and never for the person who asked for the change.** An agent-written diff drifts off that standard in two directions at once — it adds notes addressed to the prompter, and it drops the notes that were already there.

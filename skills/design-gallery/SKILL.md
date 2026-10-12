@@ -1,8 +1,6 @@
 ---
 name: design-gallery
 description: The in-repo component gallery — every component and its states on the app's own dev server, maintained as ordinary app code.
-disable-model-invocation: true
-argument-hint: "[component or area]"
 ---
 
 Every component and every state it has, on one page, out of the repo's real parts — with the loop a builder already has: save the file, see it.
@@ -61,7 +59,7 @@ Three things a screen gives a component for free, which a preview supplies itsel
 
 ## Owned elsewhere
 
-- **Rendered routes** — the states and widths of the running app, and the `file:line` behind a defect: `/visual-review`.
+- **Rendered routes** — the states and widths of the running app, and the `file:line` behind a defect: `visual-review`.
 - **Whether a value is on-system** — the repo's conformance gate, at every commit.
-- **Publishing to people who don't write code** — the sync lane (`lead` → `${CLAUDE_PLUGIN_ROOT}/references/design-sync.md`), a build product with its own entry bar.
+- **Publishing to people who don't write code** — the sync lane (`lead` → `references/design-sync.md`), a build product with its own entry bar.
 - **Whether the design is any good** — the user's glance.

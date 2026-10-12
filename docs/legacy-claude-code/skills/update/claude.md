@@ -20,7 +20,7 @@ Claude Code ships most weekdays, and a release can change the ground under a plu
    |---|---|
    | agent frontmatter (`model` · `effort` · `tools` · `maxTurns` · `hooks` · `isolation` · `experimental.*`) | `agents/*.md` |
    | skill / slash-command frontmatter (`disable-model-invocation` · `allowed-tools` · `context` · `background` · `argument-hint`) | `skills/*/SKILL.md` |
-   | plugin + marketplace manifest, install, loading, `${CLAUDE_PLUGIN_ROOT}` | `.claude-plugin/*.json`, README → *Install* |
+   | plugin + marketplace manifest, install, loading, `<repo root>` | `.claude-plugin/*.json`, README → *Install* |
    | subagent dispatch — concurrency caps, spawn depth, partial results, worktree isolation, `SendMessage` | `lead` SKILL.md → Steps 3–4 |
    | the built-ins the team delegates to — `Explore`, `Plan`, `/code-review`, `/run`, `/skill-doctor`, `/doctor prompt-audit` | `lead` SKILL.md, `ROSTER.md` → *Reused, not owned* |
    | hook events and their payloads | `agents/*.md` frontmatter, target-repo gates |

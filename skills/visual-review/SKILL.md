@@ -1,8 +1,6 @@
 ---
 name: visual-review
 description: Coverage pass on the rendered UI in a live browser — the states and widths nobody ever renders, what breaks in them, and the root cause behind it. Spawns the sweep to a subagent; report-only.
-disable-model-invocation: true
-argument-hint: "[url or pages/states]"
 ---
 
 You review the UI as it actually renders, in a real browser.
@@ -15,14 +13,14 @@ You review the UI as it actually renders, in a real browser.
 
 **Report what broke and where it came from; leave what it should have looked like to the user.** Whether the build matches its design is settled by their glance, prevented upstream by a token file that closes the set, and enforced by the repo's own conformance gate at every commit. A finding of yours that would survive the user disagreeing about the design is a finding; "feels off" is you guessing at their call.
 
-**Numbers are evidence, not output.** Measure when the eye is genuinely unsure — is that actually overflowing, is that element really 8px out — and put the one number inline next to the finding. Never a table, never a sweep of computed values across a page. Two whole classes of number are somebody else's: **tap-target sizes and WCAG criteria → `/accessibility-review`** (it drives the same browser and carries the criterion number), **values outside the token file → the repo's conformance gate** (already a failing test, and a hundred times cheaper there). Hand those over by name rather than tabling them here. Contrast is the **design's** — report unreadable text as breakage and leave the number out.
+**Numbers are evidence, not output.** Measure when the eye is genuinely unsure — is that actually overflowing, is that element really 8px out — and put the one number inline next to the finding. Never a table, never a sweep of computed values across a page. Two whole classes of number are somebody else's: **tap-target sizes and WCAG criteria → `accessibility-review`** (it drives the same browser and carries the criterion number), **values outside the token file → the repo's conformance gate** (already a failing test, and a hundred times cheaper there). Hand those over by name rather than tabling them here. Contrast is the **design's** — report unreadable text as breakage and leave the number out.
 
 **Target**: `$ARGUMENTS` if given (URL, pages, specific states/viewports); otherwise the running dev server's pages touched by the current build. Read the `CLAUDE.md` `## Design system` pointer if one exists — not to certify intent, but so a cause you trace lands on the token that owns it. **Report-only**: findings with their evidence, unsoftened; fixes only when the user asks after reading the report.
 
 ## Dispatch — spawn the sweep, never run it in the main thread
 The sweep is browser-driven and pins a thread for minutes (viewport drives, state drives, screenshots); the main thread must stay free for the user. After gathering the target + context above, spawn the **`visual-reviewer`** agent with a prompt carrying: the target (URL/pages/states/viewports) and the context (design plan / token pointer / user-named states). The return is the record, not the message: it stays at the report path, and the user hears the breakage someone using the product would hit — which screen, which state, what goes wrong — with the rest counted in one clause. Everything outside this section is the sweep body that seat executes.
 
-**Two callers, one body.** The user runs `/visual-review` and lands here; the lead dispatches `visual-reviewer`, which reads this same file and executes every section but this one (it *is* what gets dispatched, and subagents can't spawn subagents). `disable-model-invocation` still holds on the skill, so the slash command stays the user's front door and nothing fires this ambiently.
+**Two callers, one body.** The user runs `visual-review` and lands here; the lead dispatches `visual-reviewer`, which reads this same file and executes every section but this one (it *is* what gets dispatched, and subagents can't spawn subagents). `disable-model-invocation` still holds on the skill, so the slash command stays the user's front door and nothing fires this ambiently.
 
 ## Drive the browser via local-browser
 Invoke and follow the **`local-browser`** skill — it wraps the `chrome-devtools` MCP server, headless, on a profile that keeps the login. Its rules bind you:
@@ -53,7 +51,7 @@ Everything here is **plainly visible in a capture** — that's the bar.
 - **Missing or broken states**: no empty state, no loading indicator, an error that renders as a blank page, focus that produces nothing visible, a disabled control that looks enabled. Layout shift between states.
 - **Overflow/clipping**: horizontal scroll at any breakpoint, clipped text/controls, content escaping containers, `100vh` vs `100dvh` mobile cutoff.
 - **Breakage in the pixels**: overlapping elements, an element rendering unstyled, a broken grid, content collapsing at one breakpoint, text unreadable over the image or gradient behind it (report it as unreadable breakage; contrast is the design's).
-- **Ambiguous grouping**: a label as close to the field above as to its own box, a heading equidistant from the section above and the content below, card padding at or above the gutter between cards, a wrapped list item that reads as two — any group whose gap to its siblings is no larger than a gap inside it (`${CLAUDE_PLUGIN_ROOT}/skills/composition/reference/layout.md`). The pair of gaps is the one number; the cause is usually one container spending a single `gap` across two depths.
+- **Ambiguous grouping**: a label as close to the field above as to its own box, a heading equidistant from the section above and the content below, card padding at or above the gutter between cards, a wrapped list item that reads as two — any group whose gap to its siblings is no larger than a gap inside it (`skills/composition/reference/layout.md`). The pair of gaps is the one number; the cause is usually one container spending a single `gap` across two depths.
 - **Responsive**: does each breakpoint reflow, or is a desktop layout leaking into mobile?
 - **Asset render**: blurry/stretched images, wrong aspect ratio, missing art, icon misalignment.
 - **Motion/keyboard**: `prefers-reduced-motion` honored; keyboard focus visible and ordered; no motion-only affordances.
@@ -66,4 +64,4 @@ Everything here is **plainly visible in a capture** — that's the bar.
 - End with a verdict: **SHIP** (no high/med) or **FIX** (blocking findings, priority order). The verdict is about breakage, never about whether the design is right.
 
 ## Boundary
-What rendered, in the states and widths nobody else visits, plus the root cause behind it. Everything else routes: tap-target sizes and WCAG criteria → `/accessibility-review` (contrast is the design's, audited nowhere); values outside the token file → the repo's conformance gate; correctness → `code-reviewer`; structure → `architecture-reviewer`; visual-regression baseline diffing (Percy/Playwright snapshots) → CI.
+What rendered, in the states and widths nobody else visits, plus the root cause behind it. Everything else routes: tap-target sizes and WCAG criteria → `accessibility-review` (contrast is the design's, audited nowhere); values outside the token file → the repo's conformance gate; correctness → `code-reviewer`; structure → `architecture-reviewer`; visual-regression baseline diffing (Percy/Playwright snapshots) → CI.

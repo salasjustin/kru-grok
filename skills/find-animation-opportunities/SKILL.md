@@ -1,7 +1,6 @@
 ---
 name: find-animation-opportunities
 description: Search a codebase or UI for places that don't animate but should, and reject what shouldn't. Read-only; proposes motion with exact values. Use when the user asks "what could be animated here?" or wants to "make this feel more alive". For fixing existing animations, use improve-animations.
-user-invocable: false
 ---
 
 <!-- vendored from `emilkowalski/skills` (main, sha 6bf2443) → `skills/find-animation-opportunities`.

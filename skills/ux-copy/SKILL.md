@@ -1,8 +1,6 @@
 ---
 name: ux-copy
 description: Write or review UX copy — microcopy, error messages, empty states, CTAs. Trigger with "write copy for", "what should this button say?", "review this error message", or when naming a CTA, wording a confirmation dialog, filling an empty state, or writing onboarding text.
-argument-hint: "<context or copy to review>"
-user-invocable: false
 ---
 
 <!-- vendored from the knowledge-work `design` plugin (design@knowledge-work-plugins v1.2.0, sha 15898ec).
@@ -12,7 +10,7 @@ user-invocable: false
      TEAM-ADAPTED: dead CONNECTORS.md pointer dropped, connector block rewritten as team equivalents
      (repo strings for voice, `ux-designer`'s inventory for screen context); error messages split field-level vs system-level, where upstream gives every error the what+why+how structure. re-sync: diff, then re-apply. -->
 
-# /ux-copy
+# ux-copy
 
 
 Write or review UX copy for any interface context.
@@ -20,7 +18,7 @@ Write or review UX copy for any interface context.
 ## Usage
 
 ```
-/ux-copy $ARGUMENTS
+ux-copy $ARGUMENTS
 ```
 
 ## What I Need From You

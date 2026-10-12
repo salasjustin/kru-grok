@@ -1,7 +1,6 @@
 ---
 name: ux-principles
 description: UX principles from the canon (Krug, Norman, Nielsen, Yablonski, Cooper), each with the code signal that betrays it and the fix. Use when auditing a user flow for usability defects, specifying the states a flow must handle, or when another skill needs the mechanism behind an interaction decision.
-user-invocable: false
 ---
 
 Canonical UX principles, written for an agent that has **only the source** — no browser, no screenshots. Each entry pairs the principle with its **signal**: what violating it looks like in real component code.
@@ -40,7 +39,7 @@ No group matches? `grep -ril "<term>" reference/` before concluding there's no p
 
 ## Not this skill's job
 - **WCAG conformance** — `accessibility-review`. The lanes touch at the signifier boundary (a `<div onClick>` is both a signifier defect and a keyboard defect); cite the overlap, don't re-audit it.
-- **Rendered breakage** — `/visual-review` reads rendered screens for what broke; this walks a task for journey breaks.
+- **Rendered breakage** — `visual-review` reads rendered screens for what broke; this walks a task for journey breaks.
 - **The words themselves** — `ux-copy`. This flags a *missing* error state; that skill decides what it says.
 - **Conversion** — `cro`. A usability principle is not a conversion test, and the two genuinely disagree sometimes.
 - **Building the primitive accessibly** — `ark-ui`. This says which principle is violated, never how to code the replacement.

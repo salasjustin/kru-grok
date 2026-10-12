@@ -10,7 +10,6 @@ description: |
   or has apps/packages directories.
 metadata:
   version: 2.11.3
-user-invocable: false
 ---
 
 <!-- vendored verbatim from `vercel/turborepo` main:skills/turborepo @ 53629a0, v2.11.3 (MIT; LICENSE kept; `user-invocable: false` added to frontmatter).

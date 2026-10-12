@@ -1,8 +1,6 @@
 ---
 name: to-tickets
 description: Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the configured tracker (edges as text in one file per ticket locally, or native blocking links on a real tracker).
-disable-model-invocation: true
-user-invocable: false
 ---
 
 <!-- vendored from `mattpocock/skills` (v1.3.1, sha 24fe0ef) → `skills/to-tickets`. Tracer-bullet ticket decomposition backing the `planner` seat. Kept verbatim minus the Codex `agents/openai.yaml` metadata (unused here); re-sync: re-download from https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/to-tickets/. -->

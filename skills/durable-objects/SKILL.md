@@ -1,7 +1,6 @@
 ---
 name: durable-objects
 description: Build, debug, or review Cloudflare Durable Objects code for persistent state and coordination.
-user-invocable: false
 ---
 
 <!-- vendored verbatim from `cloudflare/skills` main:skills/durable-objects @ 41e0d19 (Apache-2.0; LICENSE kept; `user-invocable: false` added to frontmatter).

@@ -1,7 +1,6 @@
 ---
 name: testing
 description: Testing craft every seat that writes a test loads — this repo's conventions first, what makes a test worth keeping, the run→fix loop. Use when adding coverage for behavior you're building, running the suite over it, or deciding what a test should assert. The red → green loop itself is `tdd`.
-user-invocable: false
 ---
 
 Your judgment about **what makes a good test** is portable. Your judgment about **how this repo tests** is not — you learn that from the repo, every time. Never impose a framework, harness, or style from memory.
@@ -12,7 +11,7 @@ For the test-first loop itself — one failing test → the minimal code that pa
 
 In priority order:
 
-1. **A project testing skill or doc** — `.claude/skills/*test*`, `.claude/CLAUDE.md`, `TESTING.md`, `CONTRIBUTING.md`, `docs/testing*`. If one exists it is **authoritative**: read it fully and follow it verbatim. It outranks your defaults and your memory.
+1. **A project testing skill or doc** — `.claude/skills/*test*`, `AGENTS.md`, `TESTING.md`, `CONTRIBUTING.md`, `docs/testing*`. If one exists it is **authoritative**: read it fully and follow it verbatim. It outranks your defaults and your memory.
 2. **Config + setup** — the runner and its config, setup files, and the `package.json` scripts. This is where you learn the *real* harness: simulated DOM vs. real browser, request mocking, fixtures, database test-utils.
 3. **Existing tests** — read several nearby or similar test files. Match their query style, mocking approach, structure, and naming. **The closest existing test to what you're writing is your template.**
 

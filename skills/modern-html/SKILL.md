@@ -1,7 +1,6 @@
 ---
 name: modern-html
 description: Native HTML that replaces a library or hand-rolled JS — <dialog> vs popover, invoker commands, exclusive <details>, inert, constraint validation, <output>, <search>, loading/priority hints. Use before reaching for a headless primitive, wrapper element, or JS the platform ships.
-user-invocable: false
 ---
 
 The **native-element** half of the platform judgment: what HTML now does on its own, and which of those are safe to reach for. Load it when you're about to build an overlay, a disclosure, a form control, or a status message — before you reach for a primitive library or write JS.
@@ -52,4 +51,4 @@ Native is enough for: a modal shell, a disclosure, an exclusive accordion, a lig
 - **Which primitive library, and its part anatomy** — `ark-ui` (or the repo's existing lib).
 - **Appearance** — the project's token file, via the `## Design system` pointer. This skill names elements, never values.
 - **Shadow DOM, slots, custom elements** — `web-components`.
-- **The WCAG audit afterwards** — `accessibility-reviewer` / `/accessibility-review`.
+- **The WCAG audit afterwards** — `accessibility-reviewer` / `accessibility-review`.

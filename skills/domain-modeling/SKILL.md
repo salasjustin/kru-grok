@@ -1,7 +1,6 @@
 ---
 name: domain-modeling
 description: Build and sharpen a project's domain model. Use when discussing codebase terminology, writing or editing a GLOSSARY.md, or recording or editing an ADR.
-user-invocable: false
 ---
 
 <!-- vendored from `mattpocock/skills` (v1.3.1, sha 24fe0ef) → `skills/domain-modeling`. Ubiquitous-language + ADR maintenance, shared/reused across seats. Kept verbatim minus the Codex `agents/openai.yaml` metadata (unused here); re-sync: re-download from https://raw.githubusercontent.com/mattpocock/skills/main/skills/engineering/domain-modeling/. -->

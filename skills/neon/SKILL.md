@@ -1,7 +1,6 @@
 ---
 name: neon
 description: Neon's serverless driver — WebSocket vs HTTP transport, pooled vs direct endpoints, Drizzle on Neon. Use when wiring or debugging `@neondatabase/serverless` — an intermittent `Connection terminated unexpectedly`, a lost `23505`, a migration on the wrong endpoint. Schema and SQL are `postgres`'s.
-user-invocable: false
 ---
 
 Reproduced on **`@neondatabase/serverless@1.2.0`**, 2026-10-10, run against a stubbed `fetchFunction` with no live endpoint: the listener latch, the HTTP path's connection string and function `password`, the `NeonDbError` shape, the `-pooler` rewrite.
@@ -51,7 +50,7 @@ dbCredentials: { url: process.env.DATABASE_URL_UNPOOLED },
 
 Both strings must name the same branch, or DDL lands where the app never reads. That is the check when a migration reports success and the app still sees the old schema.
 
-**`-pooler` is irrelevant to anything on the HTTP path.** The driver rewrites the entire first hostname label to `api.` and appends `/sql`, so a pooled and a direct string resolve to the same regional endpoint — which is why the endpoint choice governs transactions and the migrator, not the read path.
+**`-pooler` is irrelevant to anything on the HTTP path.** The driver rewrites the entire first hostname label to `api.` and appends `sql`, so a pooled and a direct string resolve to the same regional endpoint — which is why the endpoint choice governs transactions and the migrator, not the read path.
 
 ## `webSocketConstructor` is a Node-version question
 It must be supplied on **Node 19–21**; Node 22+ ships a global `WebSocket` the driver picks up. `CONFIG.md` omits the version qualifier and is the outdated text here — the driver's `README.md` scopes it correctly. Combined with `poolQueryViaFetch`, a missing constructor is a **split failure**: reads keep working and only transactions break, so the miss surfaces at the first write rather than at boot. An explicit `ws` dependency on Node 22+ is inert, not wrong — leave it in place rather than removing it from a working deployment on this reasoning alone.

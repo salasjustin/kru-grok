@@ -1,8 +1,6 @@
 ---
 name: roster
 description: Roster operations for this team plugin — hire or retire a specialist, author a skill, sweep learned preferences back into the team, or audit the roster for drift. The versioned "Growing the team" checklist, executed as a tool.
-disable-model-invocation: true
-argument-hint: "<hire|author|learn|retire|audit> [name]"
 ---
 
 You run in the **main thread** (like `lead`) — minting a seat edits the orchestration contract (the `lead` routing table) and bumps + tags a version, which a subagent can't own. This skill operationalizes `ROSTER.md` → *Growing the team* so every seat is wired **identically** and nothing drifts.
@@ -21,7 +19,7 @@ Every place a **seat (agent)** is registered. `hire` writes all of them, `retire
 | 2 | `ROSTER.md` → *Current specialists* | one role row (agent · role · backing source) |
 | 3 | `ROSTER.md` → *Model tiers* | a **pinned** row (explicit full ID) + one-line why — `inherit` is retired |
 | 4 | `SOURCES.md` | backing-source row (skip only for a genuinely stack-agnostic seat, e.g. a pure reviewer — and say so) |
-| 5 | `${CLAUDE_PLUGIN_ROOT}/references/routing.md` | the `detected/needed → specialist` row — read by `lead` and by `/kru:setup`, which is what puts the seat into a repo's sheet (a review-only seat wires into *Step 4* instead; a **user-invoked** seat — triggered by the user, via a thin invoker skill (`/<name>`) or by spawning the agent — wires via its `ROSTER.md` row marked user-invoked, plus that invoker skill if it has one, and stays out of `lead` entirely; a **hook-invoked** seat — fired by the plugin's own `hooks/hooks.json`, e.g. the Stop nudge — wires via its `ROSTER.md` row marked hook-invoked plus its hook scripts, and likewise stays out of `lead` routing) |
+| 5 | `references/routing.md` | the `detected/needed → specialist` row — read by `lead` and by `setup`, which is what puts the seat into a repo's sheet (a review-only seat wires into *Step 4* instead; a **user-invoked** seat — triggered by the user, via a thin invoker skill (`/<name>`) or by spawning the agent — wires via its `ROSTER.md` row marked user-invoked, plus that invoker skill if it has one, and stays out of `lead` entirely; a **hook-invoked** seat — fired by the plugin's own `hooks/hooks.json`, e.g. the Stop nudge — wires via its `ROSTER.md` row marked hook-invoked plus its hook scripts, and likewise stays out of `lead` routing) |
 | 6 | `.claude-plugin/plugin.json` | `version` bump |
 | 7 | `.claude-plugin/marketplace.json` | the plugin entry's `version`, equal to `VERSION` |
 | 8 | `VERSION` · `ROSTER.md` header | version — minor for a new seat: `VERSION` and the `# Roster — vX.Y.Z` header, equal |
@@ -29,7 +27,7 @@ Every place a **seat (agent)** is registered. `hire` writes all of them, `retire
 
 A **skill** touches a smaller map: `skills/<name>/SKILL.md` (+ any disclosed sibling files), a note in `ROSTER.md` → *Reused, not owned* (and `SOURCES.md` if it backs a seat), `VERSION`/header, git. A skill gated on a **library the repo may or may not have** takes one more row — `references/routing.md` → *Conditional skills*, which is what puts it into a repo's sheet and is the whole of its wiring — the brief and the sheet both carry the answer down, so the seat files hold still; a skill its seats load unconditionally stays out of that table. **No agent-count bump** (#6–#7 count is agents only). A *vendored* skill also needs the provenance HTML comment + a `SOURCES.md` → *Vendored resources* note — copy the shape at the top of `skills/writing-for-agents/SKILL.md`.
 
-**`learn`** touches a map of its own: it promotes preferences from the inbox (`PREFERENCES.md`) into targeted `agents/<name>.md` prompt edits and/or the owning skill (`lead` SKILL.md for orchestration-wide rules), then bumps `VERSION`/header. It's the only verb that reads the cross-project store (`${CLAUDE_PLUGIN_ROOT}/references/store.md`) and the one verb that decides on its own what to land — the user reviews the uncommitted diff.
+**`learn`** touches a map of its own: it promotes preferences from the inbox (`PREFERENCES.md`) into targeted `agents/<name>.md` prompt edits and/or the owning skill (`lead` SKILL.md for orchestration-wide rules), then bumps `VERSION`/header. It's the only verb that reads the cross-project store (`references/store.md`) and the one verb that decides on its own what to land — the user reviews the uncommitted diff.
 
 ## Dispatch
 Read the one file for the requested verb, then execute it against the wiring map above.
@@ -37,7 +35,7 @@ Read the one file for the requested verb, then execute it against the wiring map
 | `$ARGUMENTS` | Do | File |
 |---|---|---|
 | `hire [role]` | mint a specialist + wire #1–#9 | `hire.md` |
-| `author [name]` | mint or vendor a skill; an existing name refreshes it from an `/update` verdict | `author.md` |
+| `author [name]` | mint or vendor a skill; an existing name refreshes it from an `update` verdict | `author.md` |
 | `learn` | sweep the preference inbox back into the team | `learn.md` |
 | `retire <name>` | remove a seat + unwire everywhere | `retire.md` |
 | `audit` | report roster drift (read-only) | `audit.md` |

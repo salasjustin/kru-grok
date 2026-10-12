@@ -1,5 +1,5 @@
-<!-- The sheet's content and its renderings. `/kru:setup` writes this into a repo's
-     `.claude/CLAUDE.md` in that file's own idiom. What each line says is derived from the repo; how
+<!-- The sheet's content and its renderings. `setup` writes this into a repo's
+     `AGENTS.md` in that file's own idiom. What each line says is derived from the repo; how
      it is laid out is derived from the host file. A repo's copy is a cache the next re-run rewrites. -->
 
 Two lines carry fixed wording, because each does a job its phrasing decides. **The pointer** — the
@@ -7,7 +7,7 @@ one line that makes the sheet act rather than sit, since a session that never lo
 answers and no practice:
 
 ```
-Load **`kru:lead`** before building, reviewing, or dispatching a seat — it carries how the
+Load **`lead`** before building, reviewing, or dispatching a seat — it carries how the
 team works.
 ```
 
@@ -23,7 +23,7 @@ Everything between them is this repo's answers, one line per key: the key, its v
 fixed keys are setup step 1's fields, spelled as there: `project seats` · `skills` · `tokens` · `screens`
 · `test` · `verify` · `mcp`. A seat line's key is the one-word lane it owns in this repo (`routes`, `ui`,
 `data`, `api`), and the line itself names the seat. Each line cites what it was derived
-from — a manifest entry, or on a blank repo the decision standing in for one (`← decided 2026-09-04 · /setup`).
+from — a manifest entry, or on a blank repo the decision standing in for one (`← decided 2026-09-04 · setup`).
 A seat line names the directories its seat owns, each in backticks: the handoff gate checks every file
 a brief names against them, so a file under another seat's directory shows up as a grouping miss.
 
@@ -33,27 +33,27 @@ Match the host file. The same sheet, in the two idioms most files are already wr
 block for a file that reaches for code fences and tables:
 
 ```
-routes         kru:react-router-builder       ← react-router 7.16.0 framework mode, `app/routes`
-ui             kru:react-ui-builder           ← `packages/ui` components, tailwind 4
-data           kru:postgres-architect         ← drizzle-orm, `apps/api/.server/pg/migrations`
-skills         kru:drizzle · zod · conform    ← drizzle-orm 0.44 · zod 4.1 · @conform-to/react 1.9
+routes         react-router-builder       ← react-router 7.16.0 framework mode, `app/routes`
+ui             react-ui-builder           ← `packages/ui` components, tailwind 4
+data           postgres-architect         ← drizzle-orm, `apps/api/.server/pg/migrations`
+skills         drizzle · zod · conform    ← drizzle-orm 0.44 · zod 4.1 · @conform-to/react 1.9
 project seats  .claude/skills/db-admin · e2e  ← prefer these over a plugin seat
 ```
 
 and bold-led bullets for a file written in prose:
 
 ```markdown
-- **routes** → `kru:react-router-builder` — react-router 7.16.0 framework mode, `app/routes`
-- **ui** → `kru:react-ui-builder` — `packages/ui` components, tailwind 4
-- **data** → `kru:postgres-architect` — drizzle-orm, `apps/api/.server/pg/migrations`
-- **skills** → `kru:drizzle`, `zod`, `conform` — drizzle-orm 0.44, zod 4.1, `@conform-to/react` 1.9
+- **routes** → `react-router-builder` — react-router 7.16.0 framework mode, `app/routes`
+- **ui** → `react-ui-builder` — `packages/ui` components, tailwind 4
+- **data** → `postgres-architect` — drizzle-orm, `apps/api/.server/pg/migrations`
+- **skills** → `drizzle`, `zod`, `conform` — drizzle-orm 0.44, zod 4.1, `@conform-to/react` 1.9
 - **project seats** — `.claude/skills/db-admin`, `e2e`; prefer these over a plugin seat where they overlap
 ```
 
 Both read in one pass, which is the property to preserve when the host file's idiom is a third thing.
 
 **`skills` stays one line** whatever the idiom — this repo's answered conditionals, each with the
-manifest entry it came from (`${CLAUDE_PLUGIN_ROOT}/references/routing.md` → *Conditional skills*).
+manifest entry it came from (`references/routing.md` → *Conditional skills*).
 
 ## The fields past the seats
 

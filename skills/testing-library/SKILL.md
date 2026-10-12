@@ -1,7 +1,6 @@
 ---
 name: testing-library
 description: "Testing Library recipes — the green component test whose query found the wrong element or whose interaction did nothing. Use when writing or reviewing a component test in a repo with `@testing-library/react` or `/svelte`, or reading a query failure. Not Playwright, not Vitest Browser Mode locators."
-user-invocable: false
 ---
 
 **A green component test proves what its queries prove, and the queries only ask the accessibility tree what the markup put there.** Every trap below is a green that proves nothing: a matcher reading a different attribute than the one you meant, a keystroke that fell on the floor, a `waitFor` that never waited, a warning with nowhere to print. Read a query failure as a report on the markup before reading it as a report on the query.
@@ -73,7 +72,7 @@ A component that disables with `aria-disabled` guards in its handler, and its te
 
 ## Under Vitest, two failures are silent
 The wiring recipe — cleanup, the setup file, matcher types, the act flag, fake timers — is the `vitest` skill's `reference/dom.md`. What the run shows when a line of it is missing, reproduced:
-- **`import '@testing-library/jest-dom'`** (no `/vitest`) under `globals: false` throws `ReferenceError: expect is not defined` from the setup file, and every test file reports **0 tests**. The README's `types: ["@testing-library/jest-dom"]` leaves `toBeDisabled` a `tsc` error on Vitest's `Assertion`.
+- **`import '@testing-library/jest-dom'`** (no `vitest`) under `globals: false` throws `ReferenceError: expect is not defined` from the setup file, and every test file reports **0 tests**. The README's `types: ["@testing-library/jest-dom"]` leaves `toBeDisabled` a `tsc` error on Vitest's `Assertion`.
 - **Act warnings are off.** RTL sets `IS_REACT_ACT_ENVIRONMENT` in a `beforeAll` it registers only when `beforeAll` is a global; under `globals: false` the flag stays `undefined` and React 19 never prints *An update to %s inside a test was not wrapped in act(...)* — the same state update after a raw `await` warns with the flag set and says nothing without it. The agent-detected `minimal` reporter drops a passing test's `console.error` besides. The warning is the only signal that an assertion raced an update; it reaches you with the flag on **and** `--reporter=default`.
 - jsdom's `Not implemented: HTMLFormElement's requestSubmit() method` (a submit nobody `preventDefault`ed) and `Not implemented: navigation to another Document` (a click on a real `href`) print under every reporter and fail nothing — unless the handler was supposed to prevent it.
 

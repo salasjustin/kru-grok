@@ -3,7 +3,7 @@
 Read `SKILL.md` first; the generated table rebuild and its child-row deletion live there and are not repeated here.
 
 ## Drivers
-0.45.2 ships these sqlite-dialect entry points: `better-sqlite3` · `bun-sqlite` · `libsql` (+ `/http`, `/node`, `/sqlite3`, `/wasm`, `/web`, `/ws`) · `d1` · `durable-sqlite` · `expo-sqlite` · `op-sqlite` · `sqlite-proxy`.
+0.45.2 ships these sqlite-dialect entry points: `better-sqlite3` · `bun-sqlite` · `libsql` (+ `/http`, `node`, `/sqlite3`, `/wasm`, `/web`, `/ws`) · `d1` · `durable-sqlite` · `expo-sqlite` · `op-sqlite` · `sqlite-proxy`.
 
 **There is no `drizzle-orm/node-sqlite` in 0.45.2** — `node:sqlite` support is v1-era. A project on stable that wants the Node built-in driver either waits, or uses `sqlite-proxy` and hands Drizzle its own executor. For an embedded `.db` in node, `better-sqlite3` remains the default choice.
 

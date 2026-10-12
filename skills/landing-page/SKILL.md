@@ -1,12 +1,11 @@
 ---
 name: landing-page
 description: Landing page structure — which sections a marketing page gets, in what order, as a SECTION deck mounted verbatim. Use when a landing, home, pricing, feature or about page needs structure and copy, when its order doesn't argue, or before it goes to design or build. Post-ship audit is `cro`.
-user-invocable: false
 ---
 
 # landing-page — which structure the page gets, and what earns a place on it
 
-`${CLAUDE_PLUGIN_ROOT}/skills/copywriting/references/copy-frameworks.md` holds eighteen section types and five page templates. It is a menu. Nothing in it says which template this page takes, which sections earn a place, or what order they go in — so a deck assembled off a template is complete and arbitrary: every section renders, and none of them had to be there.
+`skills/copywriting/references/copy-frameworks.md` holds eighteen section types and five page templates. It is a menu. Nothing in it says which template this page takes, which sections earn a place, or what order they go in — so a deck assembled off a template is complete and arbitrary: every section renders, and none of them had to be there.
 
 This skill is the decision in front of that menu and the handoff behind it. The sentences are `copywriting`'s.
 
@@ -88,7 +87,7 @@ The output is a **SECTION deck**: an ordered, closed set of sections, each carry
 
 ## Owned elsewhere
 
-All three live under `${CLAUDE_PLUGIN_ROOT}/skills/`.
+All three live under `skills/`.
 
 | | |
 |---|---|

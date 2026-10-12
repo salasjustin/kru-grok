@@ -1,7 +1,6 @@
 ---
 name: workers-best-practices
 description: Cloudflare Workers best practices for production applications. Use when writing, reviewing, or configuring Workers.
-user-invocable: false
 ---
 
 <!-- vendored verbatim from `cloudflare/skills` main:skills/workers-best-practices @ 41e0d19 (Apache-2.0; LICENSE kept).

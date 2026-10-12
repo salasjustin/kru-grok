@@ -1,7 +1,6 @@
 ---
 name: tui-design
 description: Terminal UI recipes for Bubble Tea (Go), Ratatui (Rust), Textual (Python) and Ink (React) — cells, background color detection, I/O off the render loop, terminal restore on every exit, resize. Use when building or reviewing a terminal app, making a CLI interactive, or choosing a TUI framework.
-user-invocable: false
 ---
 
 Verified against docs on 2026-09-11 — Ratatui 0.30.2 · Bubble Tea v1.3.10 + v2.0.9 · Lip Gloss v1.1.0 + v2.0.6 · Textual 8.2.8.

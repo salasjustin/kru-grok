@@ -1,7 +1,6 @@
 ---
 name: vitest
 description: "Vitest 5 recipes, v4 forks marked. Use when writing, running or reviewing a test in a repo with `vitest` in `package.json`, reading a Vitest run's output, working under Browser Mode (`@vitest/browser-playwright`), or speeding up a slow suite. Not Jest, not Playwright Test."
-user-invocable: false
 ---
 
 **Vitest fails quietly.** The runner is Vite-native and fast, and every trap below is a run that reports what you did not ask: a test that was never collected, a log that was never printed, state that walked from one test into the next, a timer that never fired, an element left over from the previous render. Read the run you got, not the run you expected.

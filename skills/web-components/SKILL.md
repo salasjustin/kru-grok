@@ -1,7 +1,6 @@
 ---
 name: web-components
 description: Vanilla custom elements and shadow DOM — define, lifecycle callbacks, observedAttributes, slots and ::part, CustomEvent, form participation via ElementInternals. Load when writing or reviewing a custom element, including a widget embedded in a page you don't control.
-user-invocable: false
 ---
 
 Custom elements written by hand, with a shadow root. The failure mode this skill exists for: **almost none of these throw.** The element upgrades, the console is clean, and the widget is subtly wrong — a keystroke dropped, an event nobody receives, a color inherited from a stranger's stylesheet.

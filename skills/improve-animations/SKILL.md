@@ -1,7 +1,6 @@
 ---
 name: improve-animations
 description: Audit a codebase's animation and motion code as a senior motion advisor and write prioritized, self-contained implementation plans for other agents. Read-only. Use when the user asks to "improve the animations", "audit the motion", or wants a roadmap of animation fixes, not a single-diff review.
-disable-model-invocation: true
 ---
 
 <!-- vendored from `emilkowalski/skills` (main, sha 6bf2443) → `skills/improve-animations`.

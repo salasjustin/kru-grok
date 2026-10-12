@@ -14,7 +14,7 @@ Where no step rule is stated anywhere, infer one from the names far enough to lo
 | **missing state** | a primitive or shell lacking a state its own rule names — a select with no disabled, a shell with no loading or empty slot | every screen that mounts it in that state; the builder invents one per screen |
 | **orphan** | a step nothing spends | nothing. Report it as a **question**: either a hole in the parts, or a ladder longer than the product needs |
 
-An **off-ladder** finding that the repo's conformance gate would already catch belongs to the gate — report the gate's absence instead, once (`${CLAUDE_PLUGIN_ROOT}/references/ui-practice.md` → *The conformance gate*).
+An **off-ladder** finding that the repo's conformance gate would already catch belongs to the gate — report the gate's absence instead, once (`references/ui-practice.md` → *The conformance gate*).
 
 ## Output
 

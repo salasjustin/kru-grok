@@ -1,7 +1,6 @@
 ---
 name: panda-css
 description: "Panda CSS 2 recipes — the class that ships with no rule and no warning. Use when writing or reviewing styles in a repo with a `panda.config.*` / `styled-system/`, wiring Panda into a build or CI, or debugging a Panda style that renders with no CSS. Not Tailwind, vanilla-extract or StyleX."
-user-invocable: false
 ---
 
 **Panda folds what it can at build time and warns about most of what it can't; the failures left are the ones nothing reports.** The engine resolves a style value across imports down to a literal. A `css()` argument it can't fold prints `warning panda_call_unextractable … no static CSS was generated for this call` and emits nothing. The traps below are the paths that warning misses. In each, a class reaches the DOM with no rule behind it, or with a rule that does the wrong thing, and the build exits 0. Make the warnings fail the build first (the gate below), then check the silent paths by hand.

@@ -1,7 +1,6 @@
 ---
 name: xstate
 description: "XState 5 (actor model + statecharts). Use when writing or reviewing an XState machine or actor, or a repo with `xstate` in `package.json`. XState 5.x; the React bindings (`useMachine`/`useSelector`) are the sibling `xstate-react` skill."
-user-invocable: false
 ---
 
 XState models behavior as an **actor** — something started, sent events, and eventually stopped — and a machine is one kind of actor logic. Every trap below follows from actors being genuinely concurrent and supervised rather than a bag of `useState` hooks bolted together: an actor that errors doesn't return an error value, it **stops** and tells whoever is watching; an actor scoped to a state doesn't pause when you leave, it **stops**; and a transition that produces no visible change can still **run forever**, because nothing about a statechart requires a microstep to be observable to end it.

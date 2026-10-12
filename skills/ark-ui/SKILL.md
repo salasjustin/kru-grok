@@ -1,7 +1,6 @@
 ---
 name: ark-ui
 description: Ark UI headless components (Zag.js; React/Vue/Solid/Svelte) for accessible interactive primitives — dialog, menu, combobox, select, date-picker, tabs, tooltip, popover, toast. Use when a feature needs a complex primitive (overlay, form control, date picker) built accessibly instead of hand-rolled.
-user-invocable: false
 ---
 
 Ark UI is the **headless component layer** — accessible, unstyled interactive primitives on Zag.js state machines. It's **ambient craft**: you (the framework builder) build the primitive in-place in the route you're already writing, style it against the design tokens, and place it — no separate hand-off. Load this when a feature needs a real interactive primitive (an overlay, a form control, a date picker) done accessibly, and you're deciding whether to reach for Ark, and how to compose it so its built-in a11y actually fires.
@@ -49,4 +48,4 @@ Ark components are TS-heavy (generic `value`/`collection` types, part props). Fo
 ## Not this skill's job
 - **Placing the primitive in a route, wiring page data, form submission / server actions** — that's the framework build you're already doing; this skill is just the primitive's composition + a11y + styling.
 - **The visual system** (palette, type, spacing, motion tokens) is the design's — you *apply* those tokens, you don't invent them.
-- **Post-build passes** — `/accessibility-review` (WCAG) and `/visual-review` (rendered UI) are the user's to pull afterward; this skill is the build-time discipline that makes them come back clean.
+- **Post-build passes** — `accessibility-review` (WCAG) and `visual-review` (rendered UI) are the user's to pull afterward; this skill is the build-time discipline that makes them come back clean.

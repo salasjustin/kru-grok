@@ -1,7 +1,6 @@
 ---
 name: brand-marks
 description: Logo and identity craft from *Identify* (Wheeler, Airey) — the brief, symbol vs. wordmark vs. letterform, building the mark, the appropriate/simple/memorable test, lockups, presenting concepts. Use when drawing, judging or presenting a logo, mark, wordmark or app icon.
-user-invocable: false
 ---
 
 A mark's job is to **identify** — it cannot say everything, and one that tries says nothing (Identify, Conservation International). Cites are to printed pages; *Identify* is cited by case, and its rules on form come from the case drawings as much as the captions.

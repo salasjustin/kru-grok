@@ -1,7 +1,6 @@
 ---
 name: turso-cloud
 description: Turso Cloud — managed SQLite-compatible database over the network. Use when connecting an app to a Turso Cloud database, creating or scoping auth tokens (JWT, fine-grained permissions, JWKS/external providers), or provisioning and managing cloud databases. Per-language SDKs, Vercel integration.
-user-invocable: false
 ---
 
 <!-- vendored verbatim from `tursodatabase/agent-skills` main:skills/turso-cloud @ 34ced52 (MIT; LICENSE kept; `user-invocable: false` added to frontmatter).

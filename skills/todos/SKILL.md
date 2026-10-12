@@ -1,11 +1,9 @@
 ---
 name: todos
 description: Work the project's parked wants — reconcile TODOS.md against the code, score what's unsized, propose a batch, and build what the user picks.
-disable-model-invocation: true
-argument-hint: "[n | substring]"
 ---
 
-Take the parking lot to the user as a decision, not a listing. The artifact is `TODOS.md` at the plan store root; `${CLAUDE_PLUGIN_ROOT}/TRACKER.md` → *`TODOS.md`* holds its lifecycle. This is the one verb where a filed want meets the codebase: `TODOS.md` only ever grows otherwise — `issues/` is emptied by the fix that closes a file, and a want has no other exit.
+Take the parking lot to the user as a decision, not a listing. The artifact is `TODOS.md` at the plan store root; `TRACKER.md` → *`TODOS.md`* holds its lifecycle. This is the one verb where a filed want meets the codebase: `TODOS.md` only ever grows otherwise — `issues/` is emptied by the fix that closes a file, and a want has no other exit.
 
 **The gate is the verb.** Steps 1–3 compute a proposal; the only writes before §4 are bookkeeping, and bookkeeping is the team's — a line §1 verified done is deleted, and `effort` is sized and revised on the team's own read. The order is arithmetic, the batch is a proposal, *what gets built* and *what a want is worth* are the user's call. Building off the ranking alone is the autonomous triage the parking lot exists to prevent, which is why this skill is user-invoked.
 
@@ -13,7 +11,7 @@ Take the parking lot to the user as a decision, not a listing. The artifact is `
 
 ## 1. Reconcile — every line against the code
 
-Read the file `bash "${CLAUDE_PLUGIN_ROOT}/scripts/kru-store.sh" path todos` names. Missing or empty → say so, name `/kru:todo <the thing>`, stop.
+Read the file `bash "scripts/kru-store.sh" path todos` names. Missing or empty → say so, name `todo <the thing>`, stop.
 
 Then check each **candidate** against the codebase — a targeted grep or file-open per line, `Explore` for the vague ones, budgeted at a read pass, not an investigation. Every candidate lands in one bucket:
 
@@ -64,7 +62,7 @@ On the user's answer, in this order:
 2. **Each accepted batch line** → one of three outcomes, named individually:
    - **built** — `lead` Step 3 routing, Step 4 review, **one commit per line** so a bad one reverts alone; the line is **deleted** at Step 4.5, in the same reconciliation as the commit.
    - **already done** — turned out moot on contact. Delete the line, build nothing.
-   - **bigger than its `effort`** — leaves the batch. Rescore in place, then leave it parked or hand it to `/kru:brief`. Say which, in plain words ("bigger than it looked — parked" / "needs a plan first"); never half-build it to justify the pull.
+   - **bigger than its `effort`** — leaves the batch. Rescore in place, then leave it parked or hand it to `brief`. Say which, in plain words ("bigger than it looked — parked" / "needs a plan first"); never half-build it to justify the pull.
 3. **Report**: what's now different for someone using the product, one line per built want, in plain words — then one counted clause for the rest ("plus 1 already done, 1 parked as bigger than it looked"). Commits, rescores and entry counts stay in the file and the log, and surface when asked. Lines the batch never reached are exactly as filed, plus the bookkeeping and whatever value or urgency the user confirmed.
 
 **Completion criterion: every accepted line has a named outcome, and every edit the user answered is in the file.** A line that quietly stays without an outcome is a want the user now believes was handled.
@@ -74,4 +72,4 @@ On the user's answer, in this order:
 - **No write before §4 but the bookkeeping.** Verified-done deletes and `effort` sizes are the team's; everything the user decides waits for their answer, so an interrupted run leaves only verified edits behind.
 - **Delete only what §1 verified done or what a landed commit satisfies.** Stale is old, not done; a duplicate is two lines until the user says which one goes.
 - **A `discovered` line enters the batch only when the user names it** (`$ARGUMENTS`) — a want is the user's to pull; the team's own captures wait at the gate for that.
-- **Defects live in `issues/`** — `/kru:issues` works those the same way.
+- **Defects live in `issues/`** — `issues` works those the same way.

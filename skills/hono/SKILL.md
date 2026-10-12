@@ -1,7 +1,6 @@
 ---
 name: hono
 description: Use when building Hono web applications or when the user asks about Hono APIs, routing, middleware, JSX, validation, testing, or streaming. TRIGGER when code imports from 'hono' or 'hono/*', or user mentions Hono. Use Hono CLI to inspect and test the app.
-user-invocable: false
 ---
 
 <!-- vendored verbatim from `honojs/skills` main:skills/hono @ 5becff4 (MIT; LICENSE kept; `user-invocable: false` added to frontmatter).

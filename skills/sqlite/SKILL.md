@@ -1,7 +1,6 @@
 ---
 name: sqlite
 description: "SQLite recipes for an embedded `.db` file in node/bun and for Cloudflare D1 — STRICT tables, the 12-step rebuild, pragmas, SQLITE_BUSY, migrations, backups, driver choice; D1 batch(). Use when writing or reviewing SQLite schema, migrations, or queries on either host. Not libSQL/Turso."
-user-invocable: false
 ---
 
 **SQLite is not a small Postgres.** Three differences burn a Postgres-shaped instinct wherever SQLite runs: one writer at a time regardless of pool size · types are advisory unless the table is `STRICT` · `ALTER TABLE` cannot touch a constraint.

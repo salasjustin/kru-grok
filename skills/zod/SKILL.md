@@ -1,7 +1,6 @@
 ---
 name: zod
 description: Zod 4 recipes, classic + mini. Use when writing or reviewing a Zod schema, a parse boundary, or validation-error plumbing in a repo with `zod` in `package.json`. Not Valibot, Yup, or ArkType.
-user-invocable: false
 ---
 
 **Zod's dangerous failure is not the throw — it's the parse that succeeds.** Every trap below returns a value: an unvalidated default, a coerced truthy string, an unchecked transform output, an error object that can't name the field that failed. Two consequences drive the rest: a schema that parses is not a schema that validated · the type checker proves the shape, never the boundary.

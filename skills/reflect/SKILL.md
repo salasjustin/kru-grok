@@ -1,8 +1,6 @@
 ---
 name: reflect
 description: Every seat on the repo's sheet looks back over a target — working tree, commit, branch, PR, or the code as it stands — then the lead scopes, slices and partitions the fixes and lands them.
-disable-model-invocation: true
-argument-hint: "[<pr number> | <branch> | <commit> | <a>..<b> | everything — omit for the working tree]"
 ---
 
 A review gates a slice about to land. **Reflecting looks back at work that already landed** — and then fixes it. The seat that wrote a lane is the one that knows what it got wrong there: the migration's lock, the session cookie's `sameSite`, the webhook's idempotency key, the loader that fetches on every navigation. A generic reviewer reads that code and sees code. The seat reads it against the official source it was built from.
@@ -28,11 +26,11 @@ What keeps the first phase affordable: **every seat runs in its own context**, s
 
    The first five look back **on a change**: what it got wrong that is still standing. A diff target is what that change wrote, and the files it merely grazed are `everything`'s scope. `everything` has no diff to anchor it, and is the only scope that needs slicing up front (step 4).
 
-2. **Read the roster off the repo's sheet** — `.claude/CLAUDE.md`'s seat lines (`routes`, `ui`, `data`, `skills`, `project`, and whatever else that repo answered). Those are the seats that built this code, and each line's own citation tells you the stack version the seat should be reading against. A brief hands a line down by its name (`routes`), per `lead` Step 3 → *Ambient blocks*.
+2. **Read the roster off the repo's sheet** — `AGENTS.md`'s seat lines (`routes`, `ui`, `data`, `skills`, `project`, and whatever else that repo answered). Those are the seats that built this code, and each line's own citation tells you the stack version the seat should be reading against. A brief hands a line down by its name (`routes`), per `lead` Step 3 → *Ambient blocks*.
 
-   **No sheet** → the roster is a guess, and a look-back off a guess reads the wrong lanes. Name **`/kru:setup`** for the user in one line; on their say-so to proceed anyway, derive the lanes from `${CLAUDE_PLUGIN_ROOT}/references/routing.md` and say in the report that the roster was derived, not read. A **stale** sheet — its stamp below the installed `VERSION`, or a cited line that no longer matches disk — gets the same line, and the run continues off it meanwhile.
+   **No sheet** → the roster is a guess, and a look-back off a guess reads the wrong lanes. Name **`setup`** for the user in one line; on their say-so to proceed anyway, derive the lanes from `references/routing.md` and say in the report that the roster was derived, not read. A **stale** sheet — its stamp below the installed `VERSION`, or a cited line that no longer matches disk — gets the same line, and the run continues off it meanwhile.
 
-3. **Assign every file in the target to a seat**, by the grouping rule at `${CLAUDE_PLUGIN_ROOT}/skills/lead/SKILL.md` → Step 3, *Group the change's files by seat* — a file's seat owns its stack, not the feature it was named after. Then add the review-only seats the target earns, by `${CLAUDE_PLUGIN_ROOT}/skills/lead/references/gates.md`.
+3. **Assign every file in the target to a seat**, by the grouping rule at `skills/lead/SKILL.md` → Step 3, *Group the change's files by seat* — a file's seat owns its stack, not the feature it was named after. Then add the review-only seats the target earns, by `skills/lead/references/gates.md`.
 
    **That file prices a batch for a slice about to merge, and this code already shipped. Four of its rules are overridden here:**
 
@@ -58,14 +56,14 @@ What keeps the first phase affordable: **every seat runs in its own context**, s
    What comes back is three things:
 
    - **The findings** — ranked by severity, ten at most, each with `file:line`.
-   - **The trace** — `Look-back: <what it read> · <the sources it loaded> · <what it found, or `clean`>`, on the contract and for the reasons at `${CLAUDE_PLUGIN_ROOT}/skills/roster/shared-blocks.md` → Block O. The **sources** field is this phase's addition: a seat auditing its lane from training data rather than the source its definition pins it to returns confident findings about a framework version this repo doesn't run.
+   - **The trace** — `Look-back: <what it read> · <the sources it loaded> · <what it found, or `clean`>`, on the contract and for the reasons at `skills/roster/shared-blocks.md` → Block O. The **sources** field is this phase's addition: a seat auditing its lane from training data rather than the source its definition pins it to returns confident findings about a framework version this repo doesn't run.
    - **The pointer to its report**, which is uncapped and holds the passing rules, the tables and the coverage matrices. Leave the reports closed — their existence is the record, and reading one into the main thread is the balloon waves and shortlists exist to avoid. Open one only when a returned finding is too thin to act on.
 
 ## Then fix it
 
 6. **Merge and rank.** **A return carrying no `Look-back:` line is unverified** — ask that seat for it before its findings enter the list, as `gates.md` does for a build return missing its `Return pass:`.
 
-   Then one list, deduplicated, past the trigger bar (`${CLAUDE_PLUGIN_ROOT}/skills/lead/references/gates.md` → *A finding enters the fix list only when its trigger happens in normal use*) — two seats finding the same thing in the same file is one finding, credited to both — ranked by severity **across** seats rather than within them. Then split by `${CLAUDE_PLUGIN_ROOT}/TRACKER.md` → **wrong → `issues/`, wanted → `TODOS.md`, unformed → `notes/`**. Behavior nothing tests is a wrong. A look-back produces all three, and the split is what keeps this phase honest: **only the wrongs are candidates to fix now.** A want dressed as a fix is how a reflection becomes a refactor nobody scoped.
+   Then one list, deduplicated, past the trigger bar (`skills/lead/references/gates.md` → *A finding enters the fix list only when its trigger happens in normal use*) — two seats finding the same thing in the same file is one finding, credited to both — ranked by severity **across** seats rather than within them. Then split by `TRACKER.md` → **wrong → `issues/`, wanted → `TODOS.md`, unformed → `notes/`**. Behavior nothing tests is a wrong. A look-back produces all three, and the split is what keeps this phase honest: **only the wrongs are candidates to fix now.** A want dressed as a fix is how a reflection becomes a refactor nobody scoped.
 
 7. **Scope, slice, partition** — the three cuts, in that order, over the wrongs:
 
@@ -77,11 +75,11 @@ What keeps the first phase affordable: **every seat runs in its own context**, s
 
 8. **Gate — only on what's theirs.** A fix lands as an edit nothing has pushed yet — a two-way door — so the slices above the line dispatch now; only a slice that turns on a product call or crosses a one-way door waits for its answer (`lead` → *A question never parks work it doesn't touch*). What they see is `lead` → *Talk to a PM*, not the ranked list: the wrongs someone using the product would notice, each in one plain line of effect; everything else above the line as one counted clause ("plus 6 internal fixes: tests, duplication, comments"); and the product calls the fixes contain, each with your recommendation. The ranked list, the line you drew, what fell below it and the slice order stay on your worklist and in the seats' reports — show them when asked. The message says what's already running; they can pull any line out or promote a filed one, and that answer amends the run rather than starting it. File what fell below the line, each reference anchored `file:line`.
 
-   **One question past the findings:** whether what lands gets a text pass. Ask it in the same message, once — it runs after every slice lands, so the slices never wait on it. The builders in step 9 write comments and strings alongside the code, and the drift an agent-written diff carries there is `${CLAUDE_PLUGIN_ROOT}/skills/comment-fix/SKILL.md`'s cut list. `/kru:text-fix` is user-invoked by design, so the run asks once, here, beside the findings.
+   **One question past the findings:** whether what lands gets a text pass. Ask it in the same message, once — it runs after every slice lands, so the slices never wait on it. The builders in step 9 write comments and strings alongside the code, and the drift an agent-written diff carries there is `skills/comment-fix/SKILL.md`'s cut list. `text-fix` is user-invoked by design, so the run asks once, here, beside the findings.
 
 9. **Land the slices.** Dispatch each to its partitioned seat as an ordinary build — the handoff contract, the test posture, the gates it earns, the fix loop and its 2-round cap are all `lead`'s Step 3 and 4, unchanged by having come from a reflection. Two things this origin adds: each slice's brief names **the finding it closes** and the seat's report path so the builder can read the full write-up, and a fix that lands **deletes its `issues/` file** in the same change (`lead` Step 4.5).
 
-   **Then the text pass, if step 8 asked for it** — once every slice has landed, not between them, so one sweep covers the whole remediation. Read `${CLAUDE_PLUGIN_ROOT}/skills/text-fix/SKILL.md` and run it; no invocation reaches it, which is why it reads its own siblings off disk too. Hand it **what the slices landed on** — the branch where Step 4.5 committed them, the default working tree where they are still uncommitted. The wrong target there sweeps the branch's whole history instead of this remediation.
+   **Then the text pass, if step 8 asked for it** — once every slice has landed, not between them, so one sweep covers the whole remediation. Read `skills/text-fix/SKILL.md` and run it; no invocation reaches it, which is why it reads its own siblings off disk too. Hand it **what the slices landed on** — the branch where Step 4.5 committed them, the default working tree where they are still uncommitted. The wrong target there sweeps the branch's whole history instead of this remediation.
 
 10. **Report.** What's different for someone using the product, in a few plain lines; the internal fixes as one counted clause; how many were filed rather than fixed, and where to find them; the text pass's outcome in one line where step 9 ran one. Seats, waves, per-seat counts and slice order are the record — they stay out unless asked.
 

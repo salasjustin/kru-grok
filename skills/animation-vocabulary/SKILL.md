@@ -1,7 +1,6 @@
 ---
 name: animation-vocabulary
 description: Reverse-lookup glossary turning a vague description of a web animation or motion effect into its exact term ("the bouncy thing when a popover opens" → Pop in). Use when the user asks "what's it called when…" or describes a motion effect without its name. For naming, not building.
-user-invocable: false
 ---
 
 <!-- vendored from `emilkowalski/skills` (main, sha 6bf2443) → `skills/animation-vocabulary`.

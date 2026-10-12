@@ -15,7 +15,7 @@
 #   run.sh dir                  print the deps dir
 set -euo pipefail
 src=$(cd "$(dirname "$0")" && pwd)
-data="${CLAUDE_PLUGIN_DATA:-$HOME/.claude/plugins/data/kru-kru}/asset"
+data="${KRU_ASSET_DATA:-$HOME/.kru-grok}/asset"
 mkdir -p "$data"
 
 # lockfile drift is the install trigger; gen-asset.ts is copied on any change

@@ -4,11 +4,11 @@ Detail behind `SKILL.md` → Step 4, *Screen passes*. Reached on UI work; a non-
 
 ## The two passes have seats, and you dispatch them
 
-`visual-reviewer` and `accessibility-reviewer` are review-only agents whose entire body is the corresponding skill file — same rules, same output, same boundaries, read from the one copy. **Two callers, one body:** the user still types `/visual-review` · `/accessibility-review` and gets the pass inline; you spawn the seat and get it in an isolated context, after the source-reading gates and one browser at a time (`gates.md` → the batch).
+`visual-reviewer` and `accessibility-reviewer` are review-only agents whose entire body is the corresponding skill file — same rules, same output, same boundaries, read from the one copy. **Two callers, one body:** the user still types `visual-review` · `accessibility-review` and gets the pass inline; you spawn the seat and get it in an isolated context, after the source-reading gates and one browser at a time (`gates.md` → the batch).
 
-**Conformance is the repo's own gate**, written in Phase 0 and run at every commit (`${CLAUDE_PLUGIN_ROOT}/references/ui-handoff.md` → *Conformance is prevented, not detected*) — so an off-token value is already a failing test by the time a pass could look, and neither seat here is briefed for one.
+**Conformance is the repo's own gate**, written in Phase 0 and run at every commit (`references/ui-handoff.md` → *Conformance is prevented, not detected*) — so an off-token value is already a failing test by the time a pass could look, and neither seat here is briefed for one.
 
-What that reversal does **not** touch is what a pass may conclude. `visual-reviewer` returns **breakage and causes, never a verdict on intent** — whether the build looks like the design stays the user's glance, and it's prevented upstream by a closed token file (*Conformance is prevented, not detected*, `${CLAUDE_PLUGIN_ROOT}/references/ui-handoff.md`). Dispatching the pass buys you coverage and rule violations; it does not buy you the design gate, and it never replaces the user's look.
+What that reversal does **not** touch is what a pass may conclude. `visual-reviewer` returns **breakage and causes, never a verdict on intent** — whether the build looks like the design stays the user's glance, and it's prevented upstream by a closed token file (*Conformance is prevented, not detected*, `references/ui-handoff.md`). Dispatching the pass buys you coverage and rule violations; it does not buy you the design gate, and it never replaces the user's look.
 
 ## Brief them for coverage and cause, because that's the only part they win
 
@@ -29,10 +29,10 @@ Three things bound the batch:
 
 These have no seat and you never dispatch them — they run inline in the main thread when the user names one, on the target they name:
 
-- `/seo-review` — technical SEO/AEO audit, markup fixes on request.
-- `/copywriting` · `/copy-editing` · `/cro` — rewrite a marketing page's copy · line edit · conversion audit of an underperforming page/form. All three act on a page that already ships; a marketing page that has *not been written yet* is `conversion-copywriter`'s, routed before design or build (`${CLAUDE_PLUGIN_ROOT}/references/routing.md`).
-- `/review-animations` · `/improve-animations` — motion craft review · prioritized motion roadmap.
+- `seo-review` — technical SEO/AEO audit, markup fixes on request.
+- `copywriting` · `copy-editing` · `cro` — rewrite a marketing page's copy · line edit · conversion audit of an underperforming page/form. All three act on a page that already ships; a marketing page that has *not been written yet* is `conversion-copywriter`'s, routed before design or build (`references/routing.md`).
+- `review-animations` · `improve-animations` — motion craft review · prioritized motion roadmap.
 
 These are cheap to run after the fact and each carries its own **taste** — which is exactly why they stayed the user's when the two screen passes didn't: a copy rewrite or a motion roadmap is a preference, and dispatching one as a gate means the team quietly editing the user's voice.
 
-These act on words that exist. The words themselves arrive earlier: a marketing page's argument and strings are `conversion-copywriter`'s, written before the page is designed or built, and what these passes then edit is a deck the user already approved rather than text a builder invented. On every other surface a builder still ships working draft text, checked the way visuals and motion are — by the user, when they care. Copy for lay/client audiences explains deliverables by what they're for, not by category label (learned preference). In-product microcopy stays `ux-designer`/`ux-copy`'s lane; technical SEO markup stays `/seo-review`'s; channels/campaigns stay out of scope (`ROSTER.md`).
+These act on words that exist. The words themselves arrive earlier: a marketing page's argument and strings are `conversion-copywriter`'s, written before the page is designed or built, and what these passes then edit is a deck the user already approved rather than text a builder invented. On every other surface a builder still ships working draft text, checked the way visuals and motion are — by the user, when they care. Copy for lay/client audiences explains deliverables by what they're for, not by category label (learned preference). In-product microcopy stays `ux-designer`/`ux-copy`'s lane; technical SEO markup stays `seo-review`'s; channels/campaigns stay out of scope (`ROSTER.md`).

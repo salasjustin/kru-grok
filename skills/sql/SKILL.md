@@ -1,7 +1,6 @@
 ---
 name: sql
 description: "Engine-agnostic SQL under `postgres`/`sqlite` — NULL traps, then modeling (keys, subtypes, delete rules), queries (filters, indexes, pagination, guarded writes), live schema change (expand/contract, backfills). Use when designing a schema, writing a query, or changing a live schema."
-user-invocable: false
 ---
 
 The layer under the engine skills: what holds on Postgres and SQLite alike. Load it first, then the engine's — **`postgres`** or **`sqlite`** — which carries what that engine changes.

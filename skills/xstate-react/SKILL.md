@@ -1,7 +1,6 @@
 ---
 name: xstate-react
 description: "@xstate/react 6 (useMachine/useActor/useSelector/useActorRef/createActorContext) on React 16–19 with `xstate` 5.x. Use when writing or reviewing a React component calling those hooks, or a repo with `@xstate/react` in `package.json`. The machine core is the sibling `xstate` skill."
-user-invocable: false
 ---
 
 `@xstate/react`'s hooks are a thin `useSyncExternalStore` wrapper around an actor that lives **outside** React — the actor doesn't know a component unmounted until an effect tells it to, and a component doesn't know the actor changed until it re-reads the snapshot. Every trap here is a consequence of that seam: a prop the hook only reads once, an object identity check standing in for "did the machine actually change", and a subscription that surfaces failure by throwing on the next read rather than by any React-visible signal at the point it actually failed.

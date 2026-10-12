@@ -1,7 +1,6 @@
 ---
 name: python
 description: "Python recipes. Use when writing or reviewing Python in a repo with a `pyproject.toml` or `.py` files — an MCP server, a library, a CLI, packaging, or a `test_*.py`. Python 3.10+ on the stdlib; not Django/Flask internals, not notebooks."
-user-invocable: false
 ---
 
 **Python's dangerous failure is the one that passes the gate and stays quiet.** `ruff` proves style, `mypy` proves the annotations agree with each other, and every trap below survives both — shipping as corrupted data, an invisible skip, or a distribution that imports nothing. Three consequences drive the file: an annotation is a *claim*, not a check (nothing at runtime enforces `-> int`) · a falsy value is a *value* (`0`, `False`, `""`, `[]` are data, not absence) · a green tool run proves the tool ran, never that it looked at your code. That last one is **vacuous** — a pass that could not have failed — and it is the word for the whole class.

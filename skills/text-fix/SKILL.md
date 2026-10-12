@@ -1,8 +1,6 @@
 ---
 name: text-fix
 description: Run every text pass a target earns — comments, rendered strings, human docs, agent docs — in one go, each under its own standard.
-disable-model-invocation: true
-argument-hint: "[<path> | <branch> | <pr number> — omit for the working tree]"
 ---
 
 Four classes of text, four standards, and a real target almost always carries more than one. **One target, one read, every class that fires — each still under its own standard, none of them restated here.**
@@ -11,17 +9,17 @@ Four classes of text, four standards, and a real target almost always carries mo
 
 ## Do
 
-1. **Resolve the target** from `$ARGUMENTS`, by the table at `${CLAUDE_PLUGIN_ROOT}/skills/comment-fix/SKILL.md` → step 1 — the four-row one, and the bound under it that a *diff* target audits what the change wrote while a *path* target means whole files. That bound is what keeps four passes from becoming four sweeps.
+1. **Resolve the target** from `$ARGUMENTS`, by the table at `skills/comment-fix/SKILL.md` → step 1 — the four-row one, and the bound under it that a *diff* target audits what the change wrote while a *path* target means whole files. That bound is what keeps four passes from becoming four sweeps.
 
 2. **Classify every file the target resolved to.** A file firing more than one pass is the normal case, not an edge:
 
    | what the file carries | pass | canonical text |
    | --- | --- | --- |
-   | comment lines, in any language | comments | `${CLAUDE_PLUGIN_ROOT}/skills/comment-fix/SKILL.md` |
-   | strings the user reads or hears — JSX text, `placeholder`/`aria-label`/`alt`/`title`, i18n source locale, form-action errors, toasts, email templates | rendered copy | `${CLAUDE_PLUGIN_ROOT}/skills/prose-fix/SKILL.md` |
-   | `README*`, `CONTRIBUTING*`, `DEPLOY*`, `docs/**`, root-level `*.md` | doc prose | `${CLAUDE_PLUGIN_ROOT}/skills/doc-fix/SKILL.md` |
-   | `CLAUDE.md`, `AGENTS.md`, `.claude/CLAUDE.md` | agent docs, always-loaded | `${CLAUDE_PLUGIN_ROOT}/skills/setup/SKILL.md` → *3. The bars, and the pass* |
-   | `skills/*/SKILL.md` and the reference files beside them, `agents/*.md`, any doc a pointer names | agent docs, reached by a pointer | `${CLAUDE_PLUGIN_ROOT}/skills/writing-for-agents/SKILL.md` — plus `SKILL-MECHANICS.md` when the file is a skill, `REFUSALS.md` when the line is a gate's block message |
+   | comment lines, in any language | comments | `skills/comment-fix/SKILL.md` |
+   | strings the user reads or hears — JSX text, `placeholder`/`aria-label`/`alt`/`title`, i18n source locale, form-action errors, toasts, email templates | rendered copy | `skills/prose-fix/SKILL.md` |
+   | `README*`, `CONTRIBUTING*`, `DEPLOY*`, `docs/**`, root-level `*.md` | doc prose | `skills/doc-fix/SKILL.md` |
+   | `CLAUDE.md`, `AGENTS.md`, `AGENTS.md` | agent docs, always-loaded | `skills/setup/SKILL.md` → *3. The bars, and the pass* |
+   | `skills/*/SKILL.md` and the reference files beside them, `agents/*.md`, any doc a pointer names | agent docs, reached by a pointer | `skills/writing-for-agents/SKILL.md` — plus `SKILL-MECHANICS.md` when the file is a skill, `REFUSALS.md` when the line is a gate's block message |
 
    A `.ts`/`.tsx`/`.svelte`/`.go`/`.py` file fires **comments**, and also **rendered copy** when it holds a string a user reads. A marketing route's copy is `copy-editing`'s and stays out, as does everything each pass's own file excludes.
 

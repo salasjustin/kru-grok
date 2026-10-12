@@ -1,7 +1,6 @@
 ---
 name: node
 description: "Node runtime recipes. Use when writing or reviewing code `node` runs — a CLI, a script, or a long-running service, as `.js`/`.mjs` or `node file.ts`: exit, signals, `fetch`, `--env-file`, streams, rejections, shutdown. Node 24 LTS; tsconfig and ESM/CJS config are `typescript`'s."
-user-invocable: false
 ---
 
 **Node's dangerous failure is the one the process never reports.** Output lost after the last line ran, a socket held after the code moved on, a crash quietly turned into exit 0. Three consequences drive the file: a listener *replaces* a default (signals, `unhandledRejection`, stream `'error'`) · exit is not synchronized with I/O (stdout, sockets and child buffers drain after your last statement) · a resource you didn't finish (a body, a stream, a connection) is held, not freed.

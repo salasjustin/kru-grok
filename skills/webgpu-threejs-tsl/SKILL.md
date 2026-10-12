@@ -1,7 +1,6 @@
 ---
 name: webgpu-threejs-tsl
 description: WebGPU-enabled Three.js with TSL (Three.js Shading Language) — renderer setup, node materials, compute shaders, post-processing, WGSL. Use when working with Three.js WebGPU, TSL shaders, node materials, or GPU compute in Three.js.
-user-invocable: false
 ---
 
 <!-- vendored from `dgreenheck/webgpu-claude-skill` (main, sha af2319b) → `skills/webgpu-threejs-tsl`.

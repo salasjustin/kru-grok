@@ -1,7 +1,6 @@
 ---
 name: composition
 description: "Composition — how a screen's parts relate (grouping, hierarchy, alignment, width) and the craft of choosing values (color, type, depth, finish). Load when drafting an artboard or canvas direction, laying out a screen, section or card, or checking one that reads flat or cluttered."
-user-invocable: false
 ---
 
 A token file says which gaps, inks and weights exist. It never says which gap goes *between* two things and which goes *inside* one, so a screen built entirely on-system can still read as one undifferentiated stack. This skill carries that half — the **relations** between values — and, for the turns where values are being chosen at all, the craft of choosing them.

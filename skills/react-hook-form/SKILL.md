@@ -1,7 +1,6 @@
 ---
 name: react-hook-form
 description: "React Hook Form 7.x on React, with Zod 4 via `@hookform/resolvers`. Use when writing or reviewing a React form, a `useForm` call, or form components in a repo with `react-hook-form` in `package.json`. Not Conform, not TanStack Form."
-user-invocable: false
 ---
 
 **RHF keeps the form outside React, and everything it does for you is an opt-in.** A `formState` property re-renders only if render *read* it — the Proxy tracks what it saw. A field arrives as the string the DOM held unless the registration asked for a conversion. And the values RHF holds are not the values the browser posts, so `FormData`, `getValues()` and the object your handler receives are three different objects. Every failure below is one missed opt-in, and none of them throw.

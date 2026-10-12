@@ -1,7 +1,6 @@
 ---
 name: react-email
 description: React Email 6 recipes. Use when writing or reviewing an email template, a `render()` call, or the code that sends one, in a repo with `react-email` or `@react-email/*` in `package.json`. Not MJML, not jsx-email.
-user-invocable: false
 ---
 
 **An email renders once, on the server, into a client you don't control — and React Email's own Tailwind decides what reaches it.** Its `<Tailwind>` is a second Tailwind that compiles at render time against the `config` prop and nothing else; a class it can't resolve stays in the markup as a bare `class=` that no inbox will ever style, and nothing fails. The preview server is the one place that hides the rest: it serves `static/`, and what it draws is the HTML part; the plain-text part your recipients' clients may fall back to sits only in its code panel's `md` tab. So check the output of `render()`, not the preview.

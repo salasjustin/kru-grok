@@ -1,7 +1,6 @@
 ---
 name: wrangler
 description: Run or troubleshoot Wrangler CLI commands and configure Worker projects for local development, Previews, deployment, and Cloudflare resource management.
-user-invocable: false
 ---
 
 <!-- vendored verbatim from `cloudflare/skills` main:skills/wrangler @ 41e0d19 (Apache-2.0; LICENSE kept; `user-invocable: false` added to frontmatter).
