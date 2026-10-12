@@ -1,6 +1,6 @@
 ---
 name: roster
-description: Roster operations for this team — hire or retire a specialist, author a skill, sweep learned preferences back into the team, or audit the roster for drift. The versioned "Growing the team" checklist, executed as a tool.
+description: Roster operations for this team — hire or retire a specialist, author a skill, sweep learned preferences back into the team, audit the roster for drift, release a change, or sync this fork with upstream kru. The versioned "Growing the team" checklist, executed as a tool.
 ---
 
 You run as the lead (Kru), not as a seat — minting a seat edits the orchestration contract (the `lead` routing table) and bumps a version, which a subagent can't own. This skill operationalizes `ROSTER.md` → *Growing the team* so every seat is wired **identically** and nothing drifts.
@@ -38,6 +38,8 @@ Read the one file for the requested verb, then execute it against the wiring map
 | `learn` | sweep the preference inbox back into the team | `learn.md` |
 | `retire <name>` | remove a seat + unwire everywhere | `retire.md` |
 | `audit` | report roster drift (read-only) | `audit.md` |
+| `release` | verify, PR, merge, tag and announce a roster change | `release.md` |
+| `fork-sync` | bring this fork current with upstream kru | `fork-sync.md` |
 
 Plus one shared reference, read by `hire` and `audit` rather than dispatched to: **`shared-blocks.md`** — the canonical text of the blocks every seat carries (`Context hygiene`, `TypeScript`, the return contract), with its invariant clauses and its per-seat tailored slots marked.
 
