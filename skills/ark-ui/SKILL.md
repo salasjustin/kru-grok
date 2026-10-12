@@ -16,7 +16,7 @@ The reach-for-Ark call is the load-bearing judgment — get it wrong and you eit
 
 ## Consult current docs (official sources first)
 Never answer Ark component/API specifics from memory — the part/anatomy API and per-component props move fast, and there are four framework packages. In priority order:
-1. **Ark UI MCP** — install with `claude mcp add ark-ui -- npx -y @ark-ui/mcp`. If connected (`list_components` / `list_examples` / `get_example` / `styling_guide` tools present), use it: `list_components` to find the primitive, `get_example` for the exact anatomy/props for the repo's framework, `styling_guide` for `data-*` attributes / CSS vars / design tokens. Prefer it over everything below.
+1. **Ark UI MCP** — install with `npx -y @ark-ui/mcp` as an MCP server. If connected (`list_components` / `list_examples` / `get_example` / `styling_guide` tools present), use it: `list_components` to find the primitive, `get_example` for the exact anatomy/props for the repo's framework, `styling_guide` for `data-*` attributes / CSS vars / design tokens. Prefer it over everything below.
 2. **`llms.txt`** — `https://ark-ui.com/docs/ai/llms.txt` when the MCP isn't connected.
 3. **Context7 fallback** — `ark-ui` (resolve → query-docs) when nothing above is reachable. Verify component names, part names, and props here before writing.
 
