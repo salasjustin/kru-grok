@@ -1,6 +1,8 @@
 # NOTICE
 
-team-justin is MIT-licensed (`LICENSE`). It redistributes skills copied from the
+**kru-grok is a fork of [`ap-justin/kru`](https://github.com/ap-justin/kru)** (MIT, © 2026 ap-justin), repurposed from a Claude Code plugin into a Grok Bot native team repo. The seat definitions, skills, routing and shared blocks originate there.
+
+kru (team-justin) is MIT-licensed (`LICENSE`). It redistributes skills copied from the
 projects below, each under its own license. Where an upstream ships a license file
 it is kept verbatim inside the vendored directory.
 
