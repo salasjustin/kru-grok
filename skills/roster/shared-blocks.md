@@ -381,23 +381,23 @@ Required on every seat whose source chain **leads with an MCP server or a plugin
 
 ## Block Q — `## Memory (this repo's facts)`
 
-Required on the 29 seats that **write code or config into the working repo** — Block O's 28 plus `test-writer`, whose repo-specific suite quirks are the facts most worth keeping. Each carries `memory: local` in its frontmatter, and the harness supplies the directory, its read/write instructions and the index on every run. What it can't supply is where a fact goes on *this* team, which is the whole block.
+Required on the 29 seats that **write code or config into the working repo** — Block O's 28 plus `test-writer`, whose repo-specific suite quirks are the facts most worth keeping. The memory is a plain file in the plan store (`bash scripts/kru-store.sh path agent-memory`, one `<seat>.md` per seat) that the block itself tells the seat to read and update — no harness feature is involved. The block's job is where a fact goes on *this* team.
 
 **Exempt by decision** — record the reason, don't just omit:
-- reviewers and auditors — `memory` grants `Write`/`Edit`, and *reports; does not edit* is their contract. A recurring finding still reaches the team as an inbox line.
+- reviewers and auditors — *reports; does not edit* is their contract, and a memory file is a write. A recurring finding still reaches the team as an inbox line.
 - the text-producing seats, `ui-designer` and `brand-designer` — their input is a brief, not a tree they re-learn each run.
-- **`user` and `project` scopes, on every seat.** `user` is cross-project memory the seat writes and reads back with no gate, which is exactly what the inbox → `roster learn` sweep exists to gate. `project` is committed into someone else's repo. `local` is the one scope that stays per repo and off the repo's history — the single exception to `TRACKER.md`'s *no management files in it, ever*, taken because the harness offers no out-of-tree path.
+- **A memory inside the working repo.** Memory lives in the plan store, out of the repo's history — `TRACKER.md`'s *no management files in the repo, ever* holds without exception. A seat never writes memory into the project tree.
 
 It sits **immediately before `## The return pass`** (before `## Context hygiene (stay lean)` on `test-writer`, which carries no return pass) — the pass is where a run learns what it would have wanted to know at the start.
 
 ```
 ## Memory (this repo's facts)
-Write to your memory only what the next run in this repo would otherwise pay to rediscover: a quirk of its build or suite, a convention its code follows that no file states, an approach that failed here and why. Every other fact has its own home — a preference about how the user wants the team to work, or what moving a library to a new major broke or needed, is the inbox line your brief carries, a plan, ticket or product decision is the plan store's, and what the repo's own files say stays in them. A memory is input, never authority — where it disagrees with the brief or the tree, they win, and the entry that lost gets corrected or deleted.
+Your memory is one file, `<seat>.md` under `bash scripts/kru-store.sh path agent-memory` (create it on first write): read it at the start of a run, update it at the end. Write to it only what the next run in this repo would otherwise pay to rediscover: a quirk of its build or suite, a convention its code follows that no file states, an approach that failed here and why. Every other fact has its own home — a preference about how the user wants the team to work, or what moving a library to a new major broke or needed, is the inbox line your brief carries, a plan, ticket or product decision is the plan store's, and what the repo's own files say stays in them. A memory is input, never authority — where it disagrees with the brief or the tree, they win, and the entry that lost gets corrected or deleted.
 ```
 
 **No tailored slot** — on Block O's precedent: what belongs in a repo's memory is seat-independent, and any divergence is drift.
 
-**Persistence is the hook's.** With a store repo set, `hooks/store-sync.sh` copies `.claude/agent-memory-local/` into the store at every turn end and back at session start, so a cloud vm keeps it and the block text stays surface-blind.
+**Persistence** is the plan store's: the file survives because `/workspace/kru-store/` does.
 
 **Invariant clauses:**
 - ⚠ `a preference about how the user wants the team to work` + `the inbox line` — the **routing**, and the reason this block exists. Without it a seat banks a preference where the sweep never reads it, and the gated loop in `PREFERENCES.md` is bypassed by a file that edits nothing but steers every later run.

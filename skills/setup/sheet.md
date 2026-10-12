@@ -37,7 +37,7 @@ routes         react-router-builder       ← react-router 7.16.0 framework mode
 ui             react-ui-builder           ← `packages/ui` components, tailwind 4
 data           postgres-architect         ← drizzle-orm, `apps/api/.server/pg/migrations`
 skills         drizzle · zod · conform    ← drizzle-orm 0.44 · zod 4.1 · @conform-to/react 1.9
-project seats  .claude/skills/db-admin · e2e  ← prefer these over a plugin seat
+project seats  .agents/skills/db-admin · e2e  ← prefer these over a team seat
 ```
 
 and bold-led bullets for a file written in prose:
@@ -47,7 +47,7 @@ and bold-led bullets for a file written in prose:
 - **ui** → `react-ui-builder` — `packages/ui` components, tailwind 4
 - **data** → `postgres-architect` — drizzle-orm, `apps/api/.server/pg/migrations`
 - **skills** → `drizzle`, `zod`, `conform` — drizzle-orm 0.44, zod 4.1, `@conform-to/react` 1.9
-- **project seats** — `.claude/skills/db-admin`, `e2e`; prefer these over a plugin seat where they overlap
+- **project seats** — `.agents/skills/db-admin`, `e2e`; prefer these over a team seat where they overlap
 ```
 
 Both read in one pass, which is the property to preserve when the host file's idiom is a third thing.
@@ -65,7 +65,7 @@ whichever section of the host file already owns that subject:
 ```
 tokens     packages/brand/src/colors.css      ← gate: lefthook test-brand (colors.ts ↔ colors.css)
 ⚠ test     ~9 min cold, no watch mode         ← measured; no config states it
-mcp        sentry · stripe (project scope)    ← claude mcp list; context7 + chrome-devtools at user scope
+mcp        sentry · stripe (project scope)    ← connected MCPs (GetDynamicTools); context7 + chrome-devtools at user scope
 ```
 
 **`mcp` names only the servers this repo's seats depend on**, each at the scope it is registered at, with the

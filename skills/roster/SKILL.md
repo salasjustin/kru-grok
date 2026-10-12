@@ -1,9 +1,9 @@
 ---
 name: roster
-description: Roster operations for this team plugin — hire or retire a specialist, author a skill, sweep learned preferences back into the team, or audit the roster for drift. The versioned "Growing the team" checklist, executed as a tool.
+description: Roster operations for this team — hire or retire a specialist, author a skill, sweep learned preferences back into the team, or audit the roster for drift. The versioned "Growing the team" checklist, executed as a tool.
 ---
 
-You run in the **main thread** (like `lead`) — minting a seat edits the orchestration contract (the `lead` routing table) and bumps + tags a version, which a subagent can't own. This skill operationalizes `ROSTER.md` → *Growing the team* so every seat is wired **identically** and nothing drifts.
+You run as the lead (Kru), not as a seat — minting a seat edits the orchestration contract (the `lead` routing table) and bumps a version, which a subagent can't own. This skill operationalizes `ROSTER.md` → *Growing the team* so every seat is wired **identically** and nothing drifts.
 
 **Roster-ops, not the excluded "ops/HR."** `ROSTER.md` → *Scope* excludes ops/HR as a *product-org* seat that serves end users. This skill mints the team's **own members** — self-authoring/governance, a different thing. It adds seats and skills; it never adds a business function.
 
@@ -15,15 +15,14 @@ Every place a **seat (agent)** is registered. `hire` writes all of them, `retire
 
 | # | File | Entry |
 |---|---|---|
-| 1 | `agents/<name>.md` | the definition — frontmatter `name`/`description`/`tools`/**pinned** `model` (+ `memory: local` on a code-writing seat, Block Q); seat-specific body copies a peer's shape, **shared blocks copy `shared-blocks.md`** |
+| 1 | `agents/<name>.md` | the definition — frontmatter `name`/`description` only (read-only seats carry the *Read-only seat* callout); seat-specific body copies a peer's shape, **shared blocks copy `shared-blocks.md`** |
 | 2 | `ROSTER.md` → *Current specialists* | one role row (agent · role · backing source) |
-| 3 | `ROSTER.md` → *Model tiers* | a **pinned** row (explicit full ID) + one-line why — `inherit` is retired |
+| 3 | `ROSTER.md` → *Dispatch tiers* | a row giving the seat's tier (judgment · checklist · browser) + one-line why |
 | 4 | `SOURCES.md` | backing-source row (skip only for a genuinely stack-agnostic seat, e.g. a pure reviewer — and say so) |
-| 5 | `references/routing.md` | the `detected/needed → specialist` row — read by `lead` and by `setup`, which is what puts the seat into a repo's sheet (a review-only seat wires into *Step 4* instead; a **user-invoked** seat — triggered by the user, via a thin invoker skill (`/<name>`) or by spawning the agent — wires via its `ROSTER.md` row marked user-invoked, plus that invoker skill if it has one, and stays out of `lead` entirely; a **hook-invoked** seat — fired by the plugin's own `hooks/hooks.json`, e.g. the Stop nudge — wires via its `ROSTER.md` row marked hook-invoked plus its hook scripts, and likewise stays out of `lead` routing) |
-| 6 | `.claude-plugin/plugin.json` | `version` bump |
-| 7 | `.claude-plugin/marketplace.json` | the plugin entry's `version`, equal to `VERSION` |
-| 8 | `VERSION` · `ROSTER.md` header | version — minor for a new seat: `VERSION` and the `# Roster — vX.Y.Z` header, equal |
-| 9 | git | `commit` + `tag vX.Y.Z` — **only when the user asks** (team git rule) |
+| 5 | `references/routing.md` | the `detected/needed → specialist` row — read by `lead` and by `setup`, which is what puts the seat into a repo's sheet (a review-only seat wires into *Step 4* instead; a **user-invoked** seat — triggered by the user, via a thin invoker skill (`<name>`) or by spawning the agent — wires via its `ROSTER.md` row marked user-invoked, plus that invoker skill if it has one, and stays out of `lead` entirely) |
+| 6 | `VERSION` · `ROSTER.md` header | version — minor for a new seat; equal everywhere |
+| 7 | `README.md` | the seat count, if it states one |
+| 8 | git | `commit` on a branch — push, tag and merge **only on the user's chat approval** |
 
 A **skill** touches a smaller map: `skills/<name>/SKILL.md` (+ any disclosed sibling files), a note in `ROSTER.md` → *Reused, not owned* (and `SOURCES.md` if it backs a seat), `VERSION`/header, git. A skill gated on a **library the repo may or may not have** takes one more row — `references/routing.md` → *Conditional skills*, which is what puts it into a repo's sheet and is the whole of its wiring — the brief and the sheet both carry the answer down, so the seat files hold still; a skill its seats load unconditionally stays out of that table. **No agent-count bump** (#6–#7 count is agents only). A *vendored* skill also needs the provenance HTML comment + a `SOURCES.md` → *Vendored resources* note — copy the shape at the top of `skills/writing-for-agents/SKILL.md`.
 
@@ -34,7 +33,7 @@ Read the one file for the requested verb, then execute it against the wiring map
 
 | `$ARGUMENTS` | Do | File |
 |---|---|---|
-| `hire [role]` | mint a specialist + wire #1–#9 | `hire.md` |
+| `hire [role]` | mint a specialist + wire #1–#8 | `hire.md` |
 | `author [name]` | mint or vendor a skill; an existing name refreshes it from an `update` verdict | `author.md` |
 | `learn` | sweep the preference inbox back into the team | `learn.md` |
 | `retire <name>` | remove a seat + unwire everywhere | `retire.md` |
